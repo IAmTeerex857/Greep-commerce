@@ -29,23 +29,12 @@ export function Doorstep() {
             <Reveal as="p" className="max-w-md text-[16px] leading-relaxed text-muted">
               Keep an eye on every order, every step of the way. Track your purchase and delivery status, chat with the seller, and see customer reviews before you buy.
             </Reveal>
-            <Reveal delay={0.1} className="mt-5 inline-flex items-center gap-2.5 text-[15px] font-semibold tracking-[-0.01em] text-ink">
-              <span className="relative grid size-2.5 place-items-center">
-                <span className="absolute inset-0 animate-ping rounded-full bg-green opacity-40" />
-                <span className="relative size-2 rounded-full bg-green" />
-              </span>
-              You&apos;re always in the loop.
-            </Reveal>
           </div>
         </div>
 
         <Reveal delay={0.05} className="mt-10 md:mt-14">
           <figure className="relative overflow-hidden rounded-[28px] border border-line bg-paper shadow-[var(--shadow-card)]">
-            <div className="pointer-events-none absolute inset-x-0 top-0 z-10 flex items-start justify-between p-4 md:p-5">
-              <span className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-faint">Fig. 04</span>
-              <span className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-muted">Order line</span>
-            </div>
-            <div className="px-1 pb-14 pt-9 sm:pb-10 md:px-6 md:pb-12 md:pt-8">
+            <div className="px-1 pb-14 pt-6 sm:pb-10 md:px-6 md:pb-12 md:pt-6">
               <DoorstepFigure onStep={setStep} />
             </div>
             <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex items-end justify-between gap-3 p-4 md:p-5">

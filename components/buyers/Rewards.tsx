@@ -13,7 +13,8 @@ import {
 } from "motion/react";
 import { Blobatar } from "@blobatar/react";
 import { happy, idle, love } from "blobatar/expression";
-import { ArrowRight, Coins, Gift, ShoppingBag, Ticket } from "lucide-react";
+import { ArrowRight, Gift, ShoppingBag, Ticket } from "lucide-react";
+import { siVisa } from "simple-icons";
 import { Eyebrow, Reveal, SplitWords } from "@/components/ui/Reveal";
 import { LogoMark } from "@/components/ui/Logo";
 import { useLoop } from "@/components/ui/useLoop";
@@ -114,7 +115,7 @@ export function Rewards() {
 function Kicker({ active }: { active: number }) {
   const steps = [
     { label: "Shop.", icon: <ShoppingBag size={15} strokeWidth={2.2} />, on: active <= 1 },
-    { label: "Earn.", icon: <Coins size={15} strokeWidth={2.2} />, on: active === 2 },
+    { label: "Earn.", icon: <EarnIcon />, on: active === 2 },
     { label: "Get rewarded.", icon: <Gift size={15} strokeWidth={2.2} />, on: active === 3 },
   ];
   return (
@@ -319,19 +320,35 @@ function MerchantBlob({ merchant, on, phase }: { merchant: (typeof MERCHANTS)[nu
   );
 }
 
+/** A Greep point: a lime coin with a stepped rim and the one-tone Greep mark. */
 function Coin({ size = 22 }: { size?: number }) {
   return (
     <span
-      className="grid place-items-center rounded-full border-[1.5px] border-[#0a0a0a] font-display font-black text-[#0a0a0a]"
+      className="relative grid shrink-0 place-items-center rounded-full"
       style={{
         width: size,
         height: size,
-        fontSize: size * 0.48,
-        background: "radial-gradient(circle at 35% 30%, #fff3b8, #f3c54c 55%, #d99a1e)",
-        boxShadow: "0 0 14px rgb(243 197 76 / .65)",
+        background: "#c6f36d",
+        boxShadow: `inset 0 0 0 ${Math.max(1.5, size * 0.07)}px #0a0a0a, inset 0 -${size * 0.1}px 0 rgb(10 10 10 / .14), 0 0 14px rgb(198 243 109 / .55)`,
       }}
     >
-      G
+      <span
+        aria-hidden
+        className="absolute rounded-full border-dashed"
+        style={{ inset: size * 0.16, borderWidth: Math.max(0.75, size * 0.03), borderColor: "rgb(10 10 10 / .3)" }}
+      />
+      <span className="relative" style={{ marginTop: -size * 0.04 }}>
+        <LogoMark size={size * 0.5} ink="#0a0a0a" mono />
+      </span>
+    </span>
+  );
+}
+
+/** The Earn icon: a coin outline holding the Greep mark, in the pill's colour. */
+function EarnIcon() {
+  return (
+    <span className="grid size-[17px] place-items-center rounded-full border-[1.75px] border-current">
+      <LogoMark size={10} mono />
     </span>
   );
 }
@@ -362,7 +379,9 @@ function CoinBurst({ rot, base }: { rot: MotionValue<number>; base: number }) {
   );
 }
 
+/** The Greep card, matched to the app's CardFace: lime, faint mark off the corner, chip, mono number, Visa. */
 function LoyaltyCard({ bump, reduce }: { bump: boolean; reduce: boolean }) {
+  const soft = "rgb(10 10 10 / .55)";
   return (
     <motion.div
       animate={reduce ? {} : { rotateX: [8, -4, 8], rotateY: [-10, 10, -10], y: [0, -4, 0] }}
@@ -372,36 +391,51 @@ function LoyaltyCard({ bump, reduce }: { bump: boolean; reduce: boolean }) {
       <motion.div
         animate={{ scale: bump ? [1, 1.07, 1] : 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="relative h-[124px] w-[196px] overflow-hidden rounded-[20px] p-3.5 text-white shadow-[0_24px_50px_-18px_rgb(13_150_94/0.7),inset_0_0_0_1px_rgb(255_255_255/0.18)]"
-        style={{ background: "linear-gradient(135deg, #12b071 0%, #0d965e 45%, #00683f 100%)" }}
+        className="relative flex h-[126px] w-[200px] flex-col justify-between overflow-hidden rounded-[15px] bg-lime p-3 text-[#0a0a0a] shadow-[0_12px_28px_rgb(0_0_0/0.14)]"
       >
-        <span aria-hidden className="absolute -right-10 -top-12 size-36 rounded-full bg-white/10" />
-        <span aria-hidden className="absolute -bottom-16 -left-6 size-32 rounded-full bg-lime/20" />
+        <span aria-hidden className="absolute -bottom-[38px] -right-[26px] opacity-[0.07]">
+          <LogoMark size={146} ink="#0a0a0a" mono />
+        </span>
         <motion.span
           aria-hidden
-          className="absolute inset-y-0 w-16 -skew-x-12 bg-gradient-to-r from-transparent via-white/25 to-transparent"
+          className="absolute inset-y-0 w-16 -skew-x-12 bg-gradient-to-r from-transparent via-white/40 to-transparent"
           initial={{ left: "-30%" }}
           animate={{ left: bump ? ["-30%", "130%"] : "-30%" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         />
-        <div className="relative flex items-start justify-between">
-          <span className="flex items-center gap-1.5">
-            <span className="grid size-7 place-items-center rounded-[9px] bg-white">
-              <LogoMark size={19} ink="#0a0a0a" />
-            </span>
-            <span className="font-display text-[15px] font-bold tracking-[-0.04em]">Greep</span>
-          </span>
-          <span className="rounded-full bg-lime px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider text-[#0a3b27]">Gold</span>
+        <div className="relative flex items-center gap-[5px]">
+          <LogoMark size={13} ink="#0a0a0a" mono />
+          <span className="font-display text-[11.5px] font-bold leading-none tracking-[-0.03em]">greep</span>
+          <span className="mx-px h-[9px] w-px" style={{ background: soft }} />
+          <span className="text-[9px] font-medium leading-none" style={{ color: soft }}>Rewards</span>
         </div>
-        <div className="relative mt-5">
-          <p className="font-mono text-[9.5px] uppercase tracking-[0.2em] text-white/70">Loyalty card</p>
-          <p className="mt-0.5 flex items-center justify-between text-[13px] font-semibold">
-            Tolu A.
-            <span className="font-mono text-[11px] text-white/70">•••• 2481</span>
-          </p>
+        <svg width="24" height="18" viewBox="0 0 40 30" className="relative" aria-hidden>
+          <rect x="0.5" y="0.5" width="39" height="29" rx="6" fill="#e8e2c4" stroke="rgb(10 10 10 / .28)" strokeWidth="0.75" />
+          <path d="M0 10 H13 M0 20 H13 M27 10 H40 M27 20 H40 M13 0 V30 M27 0 V30 M13 15 H27" stroke="rgb(10 10 10 / .28)" strokeWidth="0.75" fill="none" />
+        </svg>
+        <div className="relative">
+          <p className="font-mono text-[11px] leading-none tracking-[0.08em] tabular-nums">••••&nbsp; ••••&nbsp; ••••&nbsp; 2481</p>
+          <div className="mt-[7px] flex items-end justify-between">
+            <span className="flex gap-3">
+              <CardField label="Card holder" value="Tolu A." soft={soft} />
+              <CardField label="Expires" value="08/29" soft={soft} />
+            </span>
+            <svg width="30" height="10" viewBox="0 0 24 8" aria-hidden>
+              <path d={siVisa.path} fill="#0a0a0a" transform="translate(0 -8)" />
+            </svg>
+          </div>
         </div>
       </motion.div>
     </motion.div>
+  );
+}
+
+function CardField({ label, value, soft }: { label: string; value: string; soft: string }) {
+  return (
+    <span className="flex flex-col gap-px">
+      <span className="text-[6.5px] leading-none" style={{ color: soft }}>{label}</span>
+      <span className="text-[8.5px] font-medium leading-tight tabular-nums">{value}</span>
+    </span>
   );
 }
 

@@ -89,14 +89,7 @@ function FeedCard() {
 
   return (
     <Graphite className="flex flex-col p-5 md:p-6">
-      <div ref={ref} className="flex items-center justify-between">
-        <span className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-white/50">
-          <span className="relative flex size-2">
-            <span className="absolute inset-0 animate-ping rounded-full bg-lime/70" />
-            <span className="relative size-2 rounded-full bg-lime" />
-          </span>
-          Your feed
-        </span>
+      <div ref={ref} className="flex items-center justify-end">
         <span className="flex gap-1">
           {FINDS.map((x, i) => (
             <span key={x.word} className={`h-1 rounded-full transition-all duration-500 ${i === step ? "w-5 bg-white" : "w-1.5 bg-white/20"}`} />

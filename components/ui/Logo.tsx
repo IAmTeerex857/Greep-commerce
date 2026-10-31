@@ -1,7 +1,8 @@
 import { useId } from "react";
 
 /** The Greep bag-face mark, traced from public/greep-logo.svg without the white backdrop. */
-export function LogoMark({ size = 28, ink = "currentColor" }: { size?: number; ink?: string }) {
+/** `mono` paints the whole mark in `ink`, like the app's one-tone mark. */
+export function LogoMark({ size = 28, ink = "currentColor", mono }: { size?: number; ink?: string; mono?: boolean }) {
   const id = useId();
   return (
     <svg width={size} height={size} viewBox="88 80 332 362" aria-hidden="true">
@@ -14,7 +15,7 @@ export function LogoMark({ size = 28, ink = "currentColor" }: { size?: number; i
       <path
         fillRule="evenodd"
         clipRule="evenodd"
-        fill={`url(#${id})`}
+        fill={mono ? ink : `url(#${id})`}
         d="M332.036 269.731C376.56 269.731 412.653 305.825 412.653 350.348V355.494L412.652 356.016C412.371 400.299 376.386 436.112 332.036 436.112H176.607C132.083 436.112 95.9896 400.018 95.9896 355.494V350.348C95.9896 305.825 132.083 269.731 176.607 269.731H332.036ZM176.607 314.988C157.078 314.988 141.246 330.819 141.246 350.348V355.494C141.246 375.023 157.078 390.855 176.607 390.855H332.036C351.565 390.855 367.397 375.023 367.397 355.494V350.348C367.397 330.819 351.565 314.988 332.036 314.988H176.607Z"
       />
       <path
