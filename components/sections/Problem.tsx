@@ -13,7 +13,7 @@ import {
 import { AppTile, BrandGlyph } from "@/components/ui/Icons";
 import { Eyebrow, Reveal, SplitWords } from "@/components/ui/Reveal";
 
-type Kind = "video" | "camera" | "chat" | "x";
+type Kind = "video" | "camera" | "chat" | "x" | "pin";
 
 /* ---------- wall layout (design space: 1200 x 560, scaled to fit) ---------- */
 
@@ -415,8 +415,9 @@ export function Problem() {
             <SplitWords text="DMs." delay={0.3} className="text-orange" />
           </span>
         </h2>
-        <Reveal delay={0.2} as="p" className="mx-auto mt-6 max-w-md text-lg text-muted">
-          “DM for price.” Then silence. Greep fixes that.
+        <Reveal delay={0.2} as="p" className="mx-auto mt-6 max-w-xl text-lg text-muted">
+          You get the views and the comments. People ask “How much?” You reply, they disappear.{" "}
+          <span className="font-semibold text-ink">Greep fixes that.</span>
         </Reveal>
       </div>
 
@@ -527,6 +528,7 @@ function Notification({ side, n, k, low }: { side: "left" | "right"; n: Notif; k
 const APPS: { kind: Kind; name: string }[] = [
   { kind: "video", name: "TikTok" },
   { kind: "camera", name: "Instagram" },
+  { kind: "pin", name: "Pinterest" },
   { kind: "chat", name: "WhatsApp" },
   { kind: "x", name: "X" },
 ];

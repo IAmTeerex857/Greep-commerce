@@ -24,26 +24,29 @@ export function Features() {
         <div className="max-w-3xl">
           <Eyebrow index="04">Features</Eyebrow>
           <h2 className="display mt-5 text-[clamp(40px,6.4vw,84px)]">
-            <SplitWords text="Built for how" />
+            <SplitWords text="Everything you need" />
             <br />
-            <SplitWords text="Africa buys." delay={0.1} className="text-green" />
+            <SplitWords text="to run your business." delay={0.1} className="text-green" />
           </h2>
+          <p className="mt-5 max-w-md text-lg text-muted">
+            Orders, payments, chats and customers in one place. <span className="font-semibold text-ink">Less juggling. More growing.</span>
+          </p>
         </div>
 
         <div className="mt-9 grid grid-cols-1 gap-4 md:grid-cols-3">
-          <Tile className="md:col-span-2" title="Escrow on every order" line="Sellers get paid when you're happy." delay={0}>
+          <Tile className="md:col-span-2" title="Escrow on every order" line="Customers pay with confidence. Money is held safe until it arrives." delay={0}>
             <EscrowScene />
           </Tile>
-          <Tile title="Price requests" line="No more “DM for price”." delay={0.05}>
+          <Tile title="Price requests" line="Customers ask from the post. You send your offer." delay={0.05}>
             <PriceScene />
           </Tile>
-          <Tile title="Instant stores" line="One share sets up the store." delay={0.1}>
+          <Tile title="Instant stores" line="One share sets up your store." delay={0.1}>
             <StoreScene />
           </Tile>
-          <Tile title="Get paid anywhere" line="Buyers pay in dollars. You cash out at home." delay={0.15}>
+          <Tile title="Any currency" line="Customers pay their way. You get paid your way." delay={0.15}>
             <CurrencyScene />
           </Tile>
-          <Tile title="Order chat" line="Messages live with the order." delay={0.2}>
+          <Tile title="Order chat" line="Every conversation is tied to an order." delay={0.2}>
             <ChatScene />
           </Tile>
           <BuyersTile />
@@ -144,7 +147,7 @@ function Cursor({ className = "", pressed }: { className?: string; pressed?: boo
 /* ---------- 1. Escrow ---------- */
 
 const ESCROW = [900, 1100, 1100, 1200, 1100, 1500];
-const ESCROW_LABEL = ["Buyer checks out", "Paid ₦45,000", "Held safe", "Delivered", "Released", "Seller paid"];
+const ESCROW_LABEL = ["Buyer checks out", "Paid ₦45,000", "Held safe", "Delivered", "Released", "You get paid"];
 
 function EscrowScene() {
   const { ref, step } = useLoop(ESCROW);
@@ -700,8 +703,8 @@ function BuyersTile() {
   return (
     <Tile
       className="md:col-span-3"
-      title="Know your buyers"
-      line="See who buys, what they bought and where they found you."
+      title="Know your customers"
+      line="Insights and purchase history for every buyer."
       delay={0.1}
       wide
       aside={

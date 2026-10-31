@@ -8,13 +8,15 @@ import { Button } from "@/components/ui/Button";
 import { ThemeToggle } from "@/components/ui/theme";
 import { useMounted } from "@/components/ui/useMounted";
 
-const LINKS = [
+export type NavLink = { href: string; label: string };
+
+const SELLER_LINKS: NavLink[] = [
   { href: "#how", label: "How it works" },
-  { href: "#merchants", label: "Sellers" },
+  { href: "#merchants", label: "Tools" },
   { href: "#features", label: "Features" },
 ];
 
-export function Nav() {
+export function Nav({ links = SELLER_LINKS, cta: ctaLabel = "Claim your store" }: { links?: NavLink[]; cta?: string }) {
   const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);
   const [hovered, setHovered] = useState<string | null>(null);
@@ -23,7 +25,7 @@ export function Nav() {
 
   const cta = (
     <Button href="#join" size="md" variant="dark" interaction="slide-arrow">
-      Get early access
+      {ctaLabel}
     </Button>
   );
 
@@ -46,7 +48,7 @@ export function Nav() {
         </a>
 
         <div className="hidden items-center md:flex" onPointerLeave={() => setHovered(null)}>
-          {LINKS.map((l) => (
+          {links.map((l) => (
             <a
               key={l.href}
               href={l.href}

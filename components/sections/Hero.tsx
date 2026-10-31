@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import { WaitlistForm } from "@/components/ui/WaitlistForm";
 import { AppSticker, CashArt, Sticker } from "@/components/illustrations/Stickers";
 import { HeroStage, STEP_LABELS } from "@/components/sections/HeroStage";
+import { AudienceToggle } from "@/components/ui/AudienceToggle";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 const rise = (delay: number) => ({
@@ -20,11 +21,16 @@ export function Hero() {
     <section id="top" className="relative overflow-hidden pt-28 md:pt-32">
       <div className="mx-auto grid max-w-[1240px] items-center gap-10 px-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.08fr)] lg:gap-6">
         <div className="max-w-[560px]">
+          <motion.div {...rise(0.05)} className="mb-7">
+            <AudienceToggle current="sellers" />
+          </motion.div>
           <motion.p {...rise(0.1)} className="font-display text-[clamp(20px,2.2vw,28px)] font-semibold leading-[1.25] tracking-[-0.035em] text-muted">
-            <AppSticker kind="video" rotate={-8} delay={0.5} /> gets you seen.{" "}
             <span className="whitespace-nowrap">
-              <AppSticker kind="camera" rotate={7} delay={0.62} /> gets you followers.
-            </span>
+              <AppSticker kind="video" rotate={-8} delay={0.5} />
+              <AppSticker kind="camera" rotate={7} delay={0.58} />
+              <AppSticker kind="pin" rotate={-4} delay={0.66} />
+            </span>{" "}
+            Social media gets you seen.
           </motion.p>
           <motion.h1 {...rise(0.2)} className="display mt-3 text-[clamp(48px,6.4vw,92px)] leading-[0.98]">
             Greep gets you{" "}
@@ -32,16 +38,16 @@ export function Hero() {
               <Sticker rotate={-6} delay={0.75}>
                 <CashArt />
               </Sticker>{" "}
-              paid.
+              sales.
             </span>
           </motion.h1>
 
           <motion.p {...rise(0.35)} className="mt-6 max-w-md text-[17px] leading-relaxed text-muted md:text-lg">
-            Share any post to Greep and buy it in seconds. Your money stays safe until it arrives.
+            Your customers are already scrolling. Greep connects what they want to your store, so they buy straight from you.
           </motion.p>
 
           <motion.div {...rise(0.5)} className="mt-8">
-            <WaitlistForm align="start" />
+            <WaitlistForm align="start" audience="seller" cta="Claim your store" ctaShort="Claim" />
           </motion.div>
         </div>
 

@@ -4,25 +4,35 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Eyebrow, Reveal } from "@/components/ui/Reveal";
 
-const QA = [
+export type QA = { q: string; a: string };
+
+export const BUYER_FAQ: QA[] = [
+  { q: "What can I send Greep?", a: "A post, video, picture, screenshot or link. Even a photo you took on the street." },
   { q: "Does the seller need Greep?", a: "No. When you buy, we invite them to claim the order." },
   { q: "What if the seller never replies?", a: "If they don't claim it in 48 hours, you get a full refund." },
-  { q: "When does the seller get paid?", a: "When you confirm delivery. Or 72 hours after, if there's no issue." },
-  { q: "How can I pay?", a: "Card, bank transfer, mobile money or your Greep balance." },
-  { q: "Where does Greep work?", a: "Nigeria, Ghana, Kenya and Malawi to start. Buyers can pay from anywhere." },
+  { q: "Is my money safe?", a: "Yes. We hold it until your order arrives. The seller gets paid after that." },
+  { q: "How can I pay?", a: "Card, bank transfer, mobile money or your Greep balance, in your own currency." },
 ];
 
-export function FAQ() {
+export const SELLER_FAQ: QA[] = [
+  { q: "Do I need to sign up first?", a: "No. When a customer orders from your post, we invite you to claim your store and the order." },
+  { q: "What if I miss an order?", a: "Claim it within 48 hours. After that, the customer gets a full refund." },
+  { q: "When do I get paid?", a: "When the customer confirms delivery. Or 72 hours after, if there's no issue." },
+  { q: "How can customers pay me?", a: "Card, bank transfer, mobile money or their Greep balance, in their own currency." },
+  { q: "Where does Greep work?", a: "Nigeria, Ghana, Kenya and Malawi to start. Customers can pay from anywhere." },
+];
+
+export function FAQ({ items, index = "07" }: { items: QA[]; index?: string }) {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section className="py-16 md:py-22">
+    <section id="faq" className="py-16 md:py-22">
       <div className="mx-auto grid max-w-6xl gap-12 px-4 md:grid-cols-[1fr_1.4fr]">
         <div>
-          <Eyebrow index="07">Questions</Eyebrow>
+          <Eyebrow index={index}>Questions</Eyebrow>
           <h2 className="display mt-5 text-[clamp(38px,5vw,64px)]">Good to know.</h2>
         </div>
         <div className="divide-y divide-line border-y border-line">
-          {QA.map((item, i) => {
+          {items.map((item, i) => {
             const on = open === i;
             return (
               <Reveal key={item.q} delay={i * 0.05}>

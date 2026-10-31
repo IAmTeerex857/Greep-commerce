@@ -8,12 +8,12 @@ const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono"
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", axes: ["opsz"] });
 
 export const metadata: Metadata = {
-  title: "Greep | Get paid from your posts",
-  description: "Share any post to Greep and buy it in seconds. Your money stays safe until it arrives.",
+  title: "Greep | Shop what catches your eye",
+  description: "Seen something you like? Greep it. We'll find it in seconds, so you can buy it right there.",
   icons: { icon: "/greep-mark.svg" },
   openGraph: {
-    title: "Greep gets you paid",
-    description: "Share any post to Greep and buy it in seconds.",
+    title: "Greep it",
+    description: "You bring what you saw. We'll bring it to your door.",
   },
 };
 

@@ -10,7 +10,7 @@ import { useGaze } from "@blobatar/react/gaze";
 import { happy, idle, thinking, wink } from "blobatar/expression";
 import { Button } from "@/components/ui/Button";
 
-type Role = "buyer" | "seller";
+export type Role = "buyer" | "seller";
 type Status = "idle" | "loading" | "done" | "error";
 
 const ROLES: { id: Role; label: string }[] = [
@@ -23,8 +23,23 @@ const looksValid = (e: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
  * Email capture. The blob beside the input is generated from what you type,
  * so it morphs with every keystroke and becomes "your" blob once you join.
  */
-export function WaitlistForm({ compact = false, align = "center", onJoined }: { compact?: boolean; align?: "center" | "start"; onJoined?: (email: string) => void }) {
-  const [role, setRole] = useState<Role>("buyer");
+export function WaitlistForm({
+  compact = false,
+  align = "center",
+  onJoined,
+  audience,
+  cta = "Get early access",
+  ctaShort = "Join",
+}: {
+  compact?: boolean;
+  align?: "center" | "start";
+  onJoined?: (email: string) => void;
+  /** Set by pages that already know who they're talking to; hides the role switch. */
+  audience?: Role;
+  cta?: string;
+  ctaShort?: string;
+}) {
+  const [role, setRole] = useState<Role>(audience ?? "buyer");
   const [email, setEmail] = useState("");
   const [focused, setFocused] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
@@ -74,7 +89,7 @@ export function WaitlistForm({ compact = false, align = "center", onJoined }: { 
           </motion.div>
         ) : (
           <motion.form key="form" onSubmit={submit} exit={{ opacity: 0, scale: 0.97 }} className={`flex flex-col gap-3 ${align === "start" ? "items-start" : "items-center"}`}>
-            <RoleToggle role={role} onChange={setRole} />
+            {!audience && <RoleToggle role={role} onChange={setRole} />}
             <BorderBeam size="line" colorVariant="forest" theme="auto" strength={0.8} active={status !== "loading"} className="w-full">
               <div className="flex w-full items-center gap-2 rounded-[22px] border border-line-strong bg-paper p-1.5 pl-2 shadow-[var(--shadow-card)]">
                 <motion.span
@@ -106,8 +121,8 @@ export function WaitlistForm({ compact = false, align = "center", onJoined }: { 
                     <TextLoader text="Joining" variant="decode" color="#ffffff" />
                   ) : (
                     <>
-                      <span className="hidden sm:inline">Get early access</span>
-                      <span className="sm:hidden">Join</span>
+                      <span className="hidden sm:inline">{cta}</span>
+                      <span className="sm:hidden">{ctaShort}</span>
                     </>
                   )}
                 </Button>

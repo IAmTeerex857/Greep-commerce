@@ -33,6 +33,28 @@
   --color-sky: #8fb5f5;
   --color-rose: #e3574a;
 
+  /* Beautiful UI (beautifului.dev, MIT) tokens, mapped onto Greep's palette */
+  --color-ink-3: #a1a1aa;
+  --color-surface: #ffffff;
+  --color-field: #f4f4f5;
+  --color-hover: #f7f7f8;
+  --color-hover-2: #ececee;
+  --color-accent: #0d965e;
+  --color-accent-tint: #e8f7ef;
+  --color-green-tint: #e8f7ef;
+  --color-orange-tint: #fdf0e9;
+  --color-red: #e3574a;
+  --color-red-tint: #fcecea;
+  --radius-chip: 6px;
+  --radius-control: 8px;
+  --radius-card: 10px;
+  --radius-window: 14px;
+  --shadow-hairline: 0 0 0 1px var(--color-line);
+  --shadow-btn: 0 0 0 1px var(--color-line-strong), 0 0 4px 0 #0000000a;
+  --shadow-raised: 0 0 0 1px var(--color-line), 0 17.5px 23.4px 0 #0000000a, 0 9.4px 12.5px 0 #00000008, 0 5.25px 7px 0 #00000005, 0 1.16px 1.5px 0 #00000003;
+  --shadow-overlay: 0 0 0 1px var(--color-line), 0 25px 50px 0 #0000000d, 0 12px 24px 0 #0000000a, 0 6px 12px 0 #00000008, 0 3px 6px 0 #00000005;
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+
   --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-inter), var(--font-geist), ui-sans-serif, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
@@ -48,6 +70,10 @@
   --glass: rgb(255 255 255 / 0.82);
   --glass-edge: rgb(255 255 255 / 0.9);
   --ring-inset: inset 0 0.5px 0 1px rgb(9 9 11 / 0.06);
+  --tooltip-bg: #27272a;
+  --tooltip-fg: #fafafa;
+  --tooltip-muted: #a1a1aa;
+  --tooltip-border: #3f3f46;
 }
 
 :root[data-theme="dark"] {
@@ -63,11 +89,24 @@
   --color-line-strong: rgb(255 255 255 / 0.15);
   --color-mint: #0f2a1d;
   --color-green-ink: #9be7bd;
+  --color-ink-3: #71717a;
+  --color-surface: #18181b;
+  --color-field: #232327;
+  --color-hover: #1f1f23;
+  --color-hover-2: #2a2a2f;
+  --color-accent-tint: rgb(13 150 94 / 0.16);
+  --color-green-tint: rgb(13 150 94 / 0.16);
+  --color-orange-tint: rgb(238 111 56 / 0.14);
+  --color-red-tint: rgb(227 87 74 / 0.14);
+  --shadow-btn: 0 0 0 1px rgb(255 255 255 / 0.1), 0 1px 2px rgb(0 0 0 / 0.3);
+  --shadow-raised: 0 0 0 1px rgb(255 255 255 / 0.13), 0 2px 10px rgb(0 0 0 / 0.22);
+  --shadow-overlay: 0 0 0 1px rgb(255 255 255 / 0.15), 0 8px 28px rgb(0 0 0 / 0.34);
   --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4), 0 12px 32px -16px rgb(0 0 0 / 0.7);
   --shadow-pop: 0 2px 4px rgb(0 0 0 / 0.4), 0 24px 60px -24px rgb(0 0 0 / 0.8);
   --glass: rgb(24 24 27 / 0.78);
   --glass-edge: rgb(255 255 255 / 0.12);
   --ring-inset: inset 0 0.5px 0 1px rgb(255 255 255 / 0.07);
+  --tooltip-bg: #0f0f11;
 }
 
 html {
@@ -156,6 +195,36 @@ html.lenis body {
   to {
     stroke-dashoffset: -40;
   }
+}
+
+/* Beautiful UI keyframes (MIT) */
+@keyframes shimmer-text {
+  0% { background-position: 150%; }
+  to { background-position: -50%; }
+}
+@keyframes fade-up {
+  0% { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+  0% { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes pop-in {
+  0% { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes pixel-on {
+  0%, to { opacity: 0.15; }
+  18%, 42% { opacity: 1; }
+}
+@keyframes caret-blink {
+  0%, to { opacity: 1; }
+  50% { opacity: 0; }
+}
+@keyframes eq-bounce {
+  0%, to { transform: scaleY(0.35); }
+  50% { transform: scaleY(1); }
 }
 
 @media (prefers-reduced-motion: reduce) {

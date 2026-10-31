@@ -18,7 +18,7 @@ import { LogoMark } from "@/components/ui/Logo";
  */
 
 export const STEP_MS = [3200, 3200, 3200, 3800];
-export const STEP_LABELS = ["Share", "Pay", "Held safe", "Paid"];
+export const STEP_LABELS = ["Shared", "Ordered", "Held safe", "Paid"];
 
 const W = 720;
 const H = 600;
@@ -30,7 +30,7 @@ const TILES: Tile[] = [
   { x: -22, y: 24, ry: 26, z: -110, bg: "#7c6cf2", ink: "#ffffff", title: "From any app", side: "l" },
   { x: -8, y: 312, ry: 20, z: -50, bg: "#ee6f38", ink: "#ffffff", title: "Pay your way", side: "l" },
   { x: 516, y: 24, ry: -26, z: -110, bg: "#0d965e", ink: "#ffffff", title: "Held safe", side: "r" },
-  { x: 502, y: 312, ry: -20, z: -50, bg: "#f3c54c", ink: "#0a0a0a", title: "Seller paid", side: "r" },
+  { x: 502, y: 312, ry: -20, z: -50, bg: "#f3c54c", ink: "#0a0a0a", title: "You get paid", side: "r" },
 ];
 const TW = 226;
 const TH = 262;

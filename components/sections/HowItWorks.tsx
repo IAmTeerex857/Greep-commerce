@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { Check, CreditCard, Lock, Tag, Truck } from "lucide-react";
+import { Check, Lock, Tag, Truck } from "lucide-react";
 import { Eyebrow } from "@/components/ui/Reveal";
 import { HowItWorksFigure } from "@/components/sections/HowItWorksFigure";
 import { AppTile } from "@/components/ui/Icons";
@@ -9,39 +9,39 @@ import { useLoop } from "@/components/ui/useLoop";
 
 const STEPS = [
   {
-    tab: "See it",
+    tab: "They see it",
     color: "#7c6cf2",
-    title: "Spot it anywhere.",
-    line: "Scroll like you always do. When something catches your eye, you're one tap from owning it.",
-    caption: "Anywhere you scroll",
+    title: "A customer spots your product.",
+    line: "They're scrolling TikTok, Instagram or Pinterest, or out in the real world, and see something they love.",
+    caption: "Anywhere they scroll",
     items: [
-      { t: "Any app", s: "TikTok, Instagram, WhatsApp or X", tag: "Social" },
-      { t: "Any seller", s: "Even ones not on Greep yet", tag: "No sign up" },
-      { t: "No price listed?", s: "Ask for one in a tap", tag: "Price request" },
+      { t: "Any app", s: "TikTok, Instagram, Pinterest or X", tag: "Social" },
+      { t: "Real life too", s: "A photo of something they saw", tag: "Camera" },
+      { t: "They share it", s: "The post, picture or link goes to Greep", tag: "1 tap" },
     ],
   },
   {
-    tab: "Share it",
+    tab: "We connect",
     color: "#ee6f38",
-    title: "Share. Pay. Done.",
-    line: "Pick Greep from your share sheet. We find the product and you check out in seconds.",
-    caption: "Paid in seconds",
+    title: "Greep brings them to you.",
+    line: "We find the product, put your store first and connect the customer straight to you.",
+    caption: "Matched to your store",
     items: [
-      { t: "Tap share", s: "Choose Greep like any other app", tag: "1 tap" },
-      { t: "Pay your way", s: "Card, bank transfer or mobile money", tag: "Checkout" },
-      { t: "Money held safe", s: "Nobody gets it until it arrives", tag: "Escrow" },
+      { t: "We find it", s: "The exact product, in your store", tag: "Match" },
+      { t: "Your store first", s: "Your brand shows up before others", tag: "Priority" },
+      { t: "They ask, you answer", s: "Questions and price requests in one chat", tag: "Price request" },
     ],
   },
   {
-    tab: "Get it",
+    tab: "You get paid",
     color: "#0d965e",
-    title: "It arrives. They get paid.",
-    line: "The seller gets your order right away. You confirm delivery and the money moves.",
-    caption: "Delivered, then paid",
+    title: "Close the sale. Get paid.",
+    line: "The customer orders and pays on Greep. You manage the sale from your merchant account.",
+    caption: "From the scroll to the sale",
     items: [
-      { t: "Seller gets the order", s: "We set up their store if needed", tag: "Instant store" },
-      { t: "Chat about it", s: "Messages stay with the order", tag: "Order chat" },
-      { t: "Confirm delivery", s: "Then the seller gets paid", tag: "Payout" },
+      { t: "The order comes in", s: "Straight to your merchant account", tag: "Order" },
+      { t: "Money held safe", s: "Released when it arrives", tag: "Escrow" },
+      { t: "You get paid", s: "In the currency you choose", tag: "Payout" },
     ],
   },
 ];
@@ -56,8 +56,8 @@ export function HowItWorks() {
     <section id="how" className="relative overflow-x-clip py-16 md:py-22">
       <div ref={ref} className="mx-auto w-full max-w-6xl px-4">
         <Eyebrow index="02">How it works</Eyebrow>
-        <h2 className="display mt-5 text-[clamp(40px,6vw,76px)]">
-          Three taps. <span className="text-faint">That&apos;s it.</span>
+        <h2 className="display mt-5 max-w-5xl text-[clamp(36px,5vw,64px)]">
+          From discovery to sale. <span className="text-faint">Greep connects the dots.</span>
         </h2>
 
         {/* slim pill tabs */}
@@ -155,16 +155,16 @@ function Board({ step, inView }: { step: number; inView: boolean }) {
 function FloatChips({ step }: { step: number }) {
   const pairs = [
     [
-      { label: "Found on", body: <span className="flex gap-1.5">{(["video", "camera", "x"] as const).map((k) => <AppTile key={k} kind={k} size={30} />)}</span> },
+      { label: "Found on", body: <span className="flex gap-1.5">{(["video", "camera", "pin"] as const).map((k) => <AppTile key={k} kind={k} size={30} />)}</span> },
       { label: "Price", body: <Pill bg="#0a0a0a"><Tag size={14} /> ₦45,000</Pill> },
     ],
     [
-      { label: "Paid with", body: <Pill bg="#ee6f38"><CreditCard size={14} /> Card</Pill> },
+      { label: "Matched to", body: <Pill bg="#ee6f38"><Check size={14} strokeWidth={3} /> Your store</Pill> },
       { label: "Held safe", body: <Pill bg="#0a0a0a"><Lock size={14} /> ₦45,000</Pill> },
     ],
     [
       { label: "Delivered", body: <Pill bg="#7c6cf2"><Truck size={14} /> Today</Pill> },
-      { label: "Seller paid", body: <Pill bg="#0d965e">+₦45,000</Pill> },
+      { label: "You got paid", body: <Pill bg="#0d965e">+₦45,000</Pill> },
     ],
   ][step];
 

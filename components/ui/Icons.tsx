@@ -1,17 +1,18 @@
-import { siInstagram, siTiktok, siWhatsapp, siX } from "simple-icons";
+import { siInstagram, siPinterest, siTiktok, siWhatsapp, siX } from "simple-icons";
 
 /*
  * Real app icons (glyphs from simple-icons, CC0). Solid fills only.
  * Kinds keep their old names so existing call sites keep working:
- * video = TikTok, camera = Instagram, chat = WhatsApp, x = X.
+ * video = TikTok, camera = Instagram, chat = WhatsApp, x = X, pin = Pinterest.
  */
-export type AppKind = "video" | "camera" | "chat" | "x";
+export type AppKind = "video" | "camera" | "chat" | "x" | "pin";
 
 const APPS: Record<AppKind, { name: string; path: string; bg: string }> = {
   video: { name: "TikTok", path: siTiktok.path, bg: "#000000" },
   camera: { name: "Instagram", path: siInstagram.path, bg: "#FF0069" },
   chat: { name: "WhatsApp", path: siWhatsapp.path, bg: "#25D366" },
   x: { name: "X", path: siX.path, bg: "#000000" },
+  pin: { name: "Pinterest", path: siPinterest.path, bg: "#E60023" },
 };
 
 export const appName = (k: AppKind) => APPS[k].name;

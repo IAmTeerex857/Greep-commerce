@@ -11,10 +11,10 @@ import { Button } from "@/components/ui/Button";
 import { useLoop } from "@/components/ui/useLoop";
 
 const TABS = [
-  { id: "claim", tab: "Claim", bg: "#ee6f38", ink: "#0a0a0a", title: "No sign up. Just sales.", line: "A buyer checks out on your post. We set up your store and send you the order." },
-  { id: "price", tab: "Price request", bg: "#b9abf3", ink: "#0a0a0a", title: "Goodbye, “DM for price”.", line: "Buyers ask, you set the price, they buy. A 10% wait reward keeps them around." },
-  { id: "chat", tab: "Chat", bg: "#5f9a6a", ink: "#ffffff", title: "Chat that stays on topic.", line: "Every message is tied to the order. No lost DMs, no phone numbers." },
-  { id: "world", tab: "Worldwide", bg: "#f3c54c", ink: "#0a0a0a", title: "Paid in London. Cashed in Lagos.", line: "Buyers abroad pay in dollars or pounds. You get Naira, Cedis or Shillings." },
+  { id: "claim", tab: "Claim", bg: "#ee6f38", ink: "#0a0a0a", title: "No sign up. Just sales.", line: "A customer orders from your post. We set up your store and send you the order." },
+  { id: "price", tab: "Price request", bg: "#b9abf3", ink: "#0a0a0a", title: "No more “DM for price”.", line: "Customers request a price from the post they saw. You reply with your offer." },
+  { id: "chat", tab: "Chat", bg: "#5f9a6a", ink: "#ffffff", title: "Every chat leads to a sale.", line: "Every conversation is tied to an order. Less back-and-forth. More sales." },
+  { id: "world", tab: "Worldwide", bg: "#f3c54c", ink: "#0a0a0a", title: "Sell anywhere. Get paid everywhere.", line: "Customers pay in their own currency. You withdraw in the currency you choose." },
 ] as const;
 // Each folder stays open for one full run of its demo (plus the swap), then the next one opens.
 const TAB_MS = [7600, 9200, 9700, 8300];
@@ -29,12 +29,13 @@ export function Merchants() {
       <div className="mx-auto max-w-6xl px-4">
         <div>
           <div>
-            <Eyebrow index="03">For sellers</Eyebrow>
+            <Eyebrow index="03">Your tools</Eyebrow>
             <h2 className="display mt-5 max-w-3xl text-[clamp(40px,6.4vw,84px)]">
-              <SplitWords text="Your first buyer" />
+              <SplitWords text="Never lose a" />
               <br />
-              <SplitWords text="beats you here." delay={0.12} className="text-green" />
+              <SplitWords text="potential buyer." delay={0.12} className="text-green" />
             </h2>
+            <p className="mt-5 max-w-md text-lg text-muted">Greep gives you the tools to turn interest into completed orders.</p>
           </div>
         </div>
 

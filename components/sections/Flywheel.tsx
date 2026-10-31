@@ -7,15 +7,15 @@ import { Eyebrow, Reveal, SplitWords } from "@/components/ui/Reveal";
 import { LogoMark } from "@/components/ui/Logo";
 
 const NODES = [
-  { label: "Buyer shares", name: "flywheel-buyer", hue: 262 },
-  { label: "Store is set up", name: "flywheel-store", hue: 150 },
-  { label: "Seller shares store", name: "flywheel-seller", hue: 22 },
-  { label: "Followers buy", name: "flywheel-fans", hue: 210 },
+  { label: "Sees your post", name: "flywheel-buyer", hue: 262 },
+  { label: "Buys from you", name: "flywheel-store", hue: 150 },
+  { label: "Earns rewards", name: "flywheel-seller", hue: 22 },
+  { label: "Comes back", name: "flywheel-fans", hue: 210 },
 ];
 const POINTS = [
-  { t: "Buyers bring sellers.", d: "Every share can open a new store." },
-  { t: "Sellers bring buyers.", d: "Their followers come along." },
-  { t: "Everyone stays.", d: "Orders, chats and rewards live here." },
+  { t: "Know who buys.", d: "Customer insights and purchase history." },
+  { t: "Reward them.", d: "Built-in loyalty gives them more reasons to choose you." },
+  { t: "Grow repeat sales.", d: "Happy customers come back and buy again." },
 ];
 
 const R = 190;
@@ -30,10 +30,10 @@ export function Flywheel() {
     <section ref={ref} className="relative overflow-hidden py-16 md:py-24">
       <div className="mx-auto grid max-w-6xl items-center gap-16 px-4 md:grid-cols-2">
         <div>
-          <Eyebrow index="06">The loop</Eyebrow>
+          <Eyebrow index="06">Loyalty</Eyebrow>
           <h2 className="display mt-5 text-[clamp(38px,5.4vw,72px)]">
-            <SplitWords text="Every buyer brings a seller." />{" "}
-            <SplitWords text="Every seller brings buyers." delay={0.2} className="text-muted/70" />
+            <SplitWords text="Know your customers." />{" "}
+            <SplitWords text="Keep them coming back." delay={0.2} className="text-muted/70" />
           </h2>
           <ul className="mt-10 space-y-5">
             {POINTS.map((p, i) => (

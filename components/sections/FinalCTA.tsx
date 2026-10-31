@@ -1,20 +1,50 @@
 "use client";
 
 import { motion } from "motion/react";
-import { LayoutGrid, Route, Store } from "lucide-react";
+import { Coins, Heart, LayoutGrid, Route, Store } from "lucide-react";
 import { BrandGlyph } from "@/components/ui/Icons";
 import { WaitlistForm } from "@/components/ui/WaitlistForm";
 import { Logo } from "@/components/ui/Logo";
 
-const SIGNS: { label: string; href: string; bg: string; rot: number; x: number; icon: React.ReactNode; round?: boolean; ink?: string }[] = [
-  { label: "How it works", href: "#how", bg: "#8fb5f5", rot: -2, x: -10, icon: <Route size={22} strokeWidth={2.4} /> },
-  { label: "Sellers", href: "#merchants", bg: "#ee6f38", rot: 3, x: 26, icon: <Store size={22} strokeWidth={2.4} />, round: true, ink: "#fff" },
-  { label: "Features", href: "#features", bg: "#5f9a6a", rot: -1, x: 0, icon: <LayoutGrid size={22} strokeWidth={2.4} />, ink: "#fff" },
-  { label: "Instagram", href: "#", bg: "#b9abf3", rot: 2, x: 30, icon: <BrandGlyph kind="camera" size={22} />, round: true },
-  { label: "Follow on X", href: "#", bg: "#f3c54c", rot: -2, x: 4, icon: <BrandGlyph kind="x" size={20} /> },
-];
+type Sign = { label: string; href: string; bg: string; rot: number; x: number; icon: React.ReactNode; round?: boolean; ink?: string };
 
-export function FinalCTA() {
+const COPY: Record<
+  "buyer" | "seller",
+  { signs: Sign[]; lead?: string; headline: string; line: string; cta: string; ctaShort: string; tagline: string }
+> = {
+  seller: {
+    signs: [
+      { label: "How it works", href: "#how", bg: "#8fb5f5", rot: -2, x: -10, icon: <Route size={22} strokeWidth={2.4} /> },
+      { label: "Your tools", href: "#merchants", bg: "#ee6f38", rot: 3, x: 26, icon: <Store size={22} strokeWidth={2.4} />, round: true, ink: "#fff" },
+      { label: "Features", href: "#features", bg: "#5f9a6a", rot: -1, x: 0, icon: <LayoutGrid size={22} strokeWidth={2.4} />, ink: "#fff" },
+      { label: "Instagram", href: "#", bg: "#b9abf3", rot: 2, x: 30, icon: <BrandGlyph kind="camera" size={22} />, round: true },
+      { label: "TikTok", href: "#", bg: "#f3c54c", rot: -2, x: 4, icon: <BrandGlyph kind="video" size={20} /> },
+    ],
+    lead: "Social media gives you likes, followers and views.",
+    headline: "Greep makes sure you actually sell.",
+    line: "Turn the attention your products get into real sales.",
+    cta: "Claim your store",
+    ctaShort: "Claim",
+    tagline: "We bring customers and businesses together.",
+  },
+  buyer: {
+    signs: [
+      { label: "How it works", href: "#how", bg: "#8fb5f5", rot: -2, x: -10, icon: <Route size={22} strokeWidth={2.4} /> },
+      { label: "Pay your way", href: "#currency", bg: "#ee6f38", rot: 3, x: 26, icon: <Coins size={22} strokeWidth={2.4} />, round: true, ink: "#fff" },
+      { label: "Saved finds", href: "#saved", bg: "#5f9a6a", rot: -1, x: 0, icon: <Heart size={22} strokeWidth={2.4} />, ink: "#fff" },
+      { label: "Instagram", href: "#", bg: "#b9abf3", rot: 2, x: 30, icon: <BrandGlyph kind="camera" size={22} />, round: true },
+      { label: "Pinterest", href: "#", bg: "#f3c54c", rot: -2, x: 4, icon: <BrandGlyph kind="pin" size={20} /> },
+    ],
+    headline: "Greep it.",
+    line: "You bring what you saw. We'll bring it to your door.",
+    cta: "Get started with Greep",
+    ctaShort: "Start",
+    tagline: "We always know where to look.",
+  },
+};
+
+export function FinalCTA({ audience = "seller" }: { audience?: "buyer" | "seller" }) {
+  const c = COPY[audience];
   return (
     <section id="join" className="relative overflow-hidden pb-10 pt-14 md:pt-20">
       <div className="mx-auto grid max-w-6xl items-center gap-16 px-4 md:grid-cols-[400px_1fr]">
@@ -26,7 +56,7 @@ export function FinalCTA() {
           <Cloud className="left-[-40px] top-[150px]" />
           <Cloud className="right-[-50px] top-[330px] scale-90" delay={1.2} />
           <div className="absolute inset-x-0 top-12 flex flex-col items-center gap-4">
-            {SIGNS.map((s, i) => (
+            {c.signs.map((s, i) => (
               <motion.a
                 key={s.label}
                 href={s.href}
@@ -48,30 +78,39 @@ export function FinalCTA() {
         {/* bubbles */}
         <div className="flex flex-col gap-6">
           <Bubble className="bg-lilac text-[#0a0a0a]" pattern="rings" tail="left">
-            <h2 className="display text-[clamp(40px,5.6vw,76px)]">
-              Ready to get paid?
-            </h2>
+            {c.lead && <p className="mb-4 max-w-md text-lg font-medium leading-snug opacity-75">{c.lead}</p>}
+            <h2 className={`display ${c.lead ? "text-[clamp(36px,4.6vw,64px)]" : "text-[clamp(56px,8vw,112px)]"}`}>{c.headline}</h2>
           </Bubble>
           <Bubble className="ml-auto w-[92%] bg-[#5f9a6a] text-white" pattern="squiggle" tail="right" delay={0.1}>
-            <p className="max-w-md text-xl font-medium leading-snug">Join the early list. It&apos;s free.</p>
+            <p className="max-w-md text-xl font-medium leading-snug">{c.line}</p>
           </Bubble>
           <Bubble className="ml-auto w-full bg-orange md:w-[88%]" pattern="stripes" tail="left" delay={0.2}>
-            <WaitlistForm compact />
+            <WaitlistForm compact audience={audience} cta={c.cta} ctaShort={c.ctaShort} />
           </Bubble>
         </div>
       </div>
 
       <footer className="relative mx-auto mt-12 max-w-6xl px-4">
-        <div className="flex flex-col items-start justify-between gap-6 border-t border-line pt-8 md:flex-row md:items-center">
-          <Logo />
-          <nav className="flex flex-wrap gap-6 text-[14px] text-muted">
+        <div className="grid gap-8 border-t border-line pt-8 md:grid-cols-[1fr_auto_auto] md:items-center md:gap-12">
+          <div>
+            <Logo />
+            <p className="mt-2 text-[14px] text-muted">{c.tagline}</p>
+          </div>
+          <nav className="flex flex-wrap gap-x-6 gap-y-2 text-[14px] text-muted">
+            <a href="#top" className="hover:text-ink">Explore</a>
             <a href="#how" className="hover:text-ink">How it works</a>
-            <a href="#merchants" className="hover:text-ink">Sellers</a>
-            <a href="#features" className="hover:text-ink">Features</a>
             <a href="#join" className="hover:text-ink">Contact</a>
+            <a href="#faq" className="hover:text-ink">FAQs</a>
           </nav>
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">© 2026 Greep</p>
+          <nav className="flex gap-2" aria-label="Social">
+            {(["camera", "video", "pin"] as const).map((k) => (
+              <a key={k} href="#" className="grid size-9 place-items-center rounded-full bg-sunken text-ink transition-colors hover:bg-ink hover:text-canvas">
+                <BrandGlyph kind={k} size={16} />
+              </a>
+            ))}
+          </nav>
         </div>
+        <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">© 2026 Greep. All rights reserved.</p>
       </footer>
     </section>
   );
