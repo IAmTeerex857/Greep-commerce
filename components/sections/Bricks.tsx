@@ -10,12 +10,12 @@ import { Eyebrow } from "@/components/ui/Reveal";
  */
 const BRICKS = [
   { label: "Post", meta: "You post anywhere", bg: "#b9abf3", ink: "#0a0a0a", studs: 5, x: 4 },
-  { label: "Share", meta: "Buyer taps share", bg: "#f3c54c", ink: "#0a0a0a", studs: 6, x: 2 },
-  { label: "Checkout", meta: "Paid in seconds", bg: "#0d965e", ink: "#ffffff", studs: 8, x: 3 },
-  { label: "Held safe", meta: "Money waits in escrow", bg: "#141614", ink: "#ffffff", studs: 8, x: 1, dark: true },
+  { label: "Share", meta: "They share it to Greep", bg: "#f3c54c", ink: "#0a0a0a", studs: 6, x: 2 },
+  { label: "Checkout", meta: "They order on Greep", bg: "#0d965e", ink: "#ffffff", studs: 8, x: 3 },
+  { label: "Held safe", meta: "Held until it arrives", bg: "#141614", ink: "#ffffff", studs: 8, x: 1, dark: true },
   { label: "Delivered", meta: "Buyer confirms", bg: "#8fb5f5", ink: "#0a0a0a", studs: 8, x: 4 },
-  { label: "Paid", meta: "Cash out same day", bg: "#ee6f38", ink: "#ffffff", studs: 5, x: 2 },
-  { label: "Credit", meta: "Unlock stock loans", bg: "#c6f36d", ink: "#0a0a0a", studs: 6, x: 5 },
+  { label: "Paid", meta: "Withdraw in your currency", bg: "#ee6f38", ink: "#ffffff", studs: 5, x: 2 },
+  { label: "Repeat sale", meta: "They come back and buy again", bg: "#c6f36d", ink: "#0a0a0a", studs: 6, x: 5 },
 ];
 const GRID = 13; // stack width in studs
 const N = BRICKS.length;
@@ -67,13 +67,13 @@ export function Bricks() {
     <section ref={ref} className="relative h-[280vh]">
       <div className="sticky top-0 flex h-screen flex-col items-center justify-center overflow-hidden px-4">
         <div className="relative z-0 text-center">
-          <Eyebrow index="05" className="justify-center">
-            Your sales history
+          <Eyebrow className="justify-center">
+            How a sale comes together
           </Eyebrow>
           <h2 className="display mt-4 text-[clamp(34px,5.4vw,72px)]">
-            Every sale is a <span className="text-green">brick.</span>
+            From the scroll to the <span className="text-green">sale.</span>
           </h2>
-          <p className="eyebrow mt-3 text-muted">Stack them up · build credit</p>
+          <p className="eyebrow mt-3 text-muted">All connected on Greep.</p>
         </div>
 
         <div className="relative z-10 mt-8 md:mt-10" style={{ width: GRID * d.P, height: stackH }}>
@@ -85,7 +85,7 @@ export function Bricks() {
             {BRICKS.map((b, i) => (
               <motion.span
                 key={b.label}
-                className="absolute whitespace-nowrap font-mono text-[11px] uppercase tracking-[0.18em] text-ink-2"
+                className="absolute whitespace-nowrap font-mono text-[11px] text-ink-2"
                 style={{ top: d.SH + (N - 1 - i) * d.H + d.H / 2 - 7 }}
                 initial={false}
                 animate={{ opacity: i < landed ? 1 : 0, x: i < landed ? 0 : -8 }}
@@ -211,7 +211,7 @@ function Brick({
               backgroundSize: "5px 5px",
             }}
           >
-            <span className="font-display font-bold leading-none tracking-[-0.05em]" style={{ fontSize: d.H * 0.52, marginTop: -3 }}>
+            <span className="font-display font-semibold leading-none tracking-[-0.05em]" style={{ fontSize: d.H * 0.52, marginTop: -3 }}>
               {brick.label}
             </span>
           </div>

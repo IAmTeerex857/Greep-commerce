@@ -57,11 +57,10 @@ export function SplitWords({ text, className, delay = 0 }: { text: string; class
   );
 }
 
-export function Eyebrow({ index, children, className = "" }: { index?: string; children: ReactNode; className?: string }) {
+export function Eyebrow({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
     <p className={`eyebrow flex items-center gap-2 text-muted ${className}`}>
       <span className="size-1.5 rounded-full bg-green" />
-      {index && <span className="text-green">{index}</span>}
       {children}
     </p>
   );

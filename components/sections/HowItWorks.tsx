@@ -53,9 +53,9 @@ export function HowItWorks() {
   const cur = STEPS[step];
 
   return (
-    <section id="how" className="relative overflow-x-clip py-16 md:py-22">
+    <section id="how" className="relative overflow-x-clip py-16 md:py-24">
       <div ref={ref} className="mx-auto w-full max-w-6xl px-4">
-        <Eyebrow index="02">How it works</Eyebrow>
+        <Eyebrow>How it works</Eyebrow>
         <h2 className="display mt-5 max-w-5xl text-[clamp(36px,5vw,64px)]">
           From discovery to sale. <span className="text-faint">Greep connects the dots.</span>
         </h2>
@@ -73,7 +73,7 @@ export function HowItWorks() {
         <div className="mt-10 grid items-center gap-12 md:grid-cols-[minmax(0,1fr)_minmax(0,540px)] md:gap-16">
           <AnimatePresence mode="wait">
             <motion.div key={step} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}>
-              <h3 className="font-display text-[clamp(26px,3vw,36px)] font-bold tracking-[-0.045em]">{cur.title}</h3>
+              <h3 className="font-display text-[clamp(26px,3vw,36px)] font-medium tracking-[-0.045em]">{cur.title}</h3>
               <p className="mt-3 max-w-md text-[16px] leading-relaxed text-muted">{cur.line}</p>
               <ul className="mt-7 space-y-3">
                 {cur.items.map((it, i) => (
@@ -94,7 +94,7 @@ export function HowItWorks() {
                       <Check size={14} strokeWidth={3} />
                     </motion.span>
                     <span className="min-w-0 flex-1">
-                      <span className="block text-[15px] font-semibold tracking-[-0.01em]">{it.t}</span>
+                      <span className="block text-[15px] font-semibold">{it.t}</span>
                       <span className="block truncate text-[13.5px] text-muted">{it.s}</span>
                     </span>
                     <span className="hidden shrink-0 rounded-full border border-line px-3 py-1 text-[12.5px] font-medium text-ink-2 sm:block">{it.tag}</span>

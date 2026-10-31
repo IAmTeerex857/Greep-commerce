@@ -37,10 +37,9 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
     <motion.button
       type="button"
       onClick={() => setTheme(dark ? "light" : "dark")}
-      whileHover={{ scale: 1.04 }}
       whileTap={{ scale: 0.94 }}
       aria-label={dark ? "Switch to light theme" : "Switch to dark theme"}
-      className={`relative grid size-10 place-items-center overflow-hidden rounded-2xl border border-line bg-paper text-ink shadow-[var(--ring-inset),0_1px_2px_rgb(0_0_0/0.05)] ${className}`}
+      className={`relative grid size-10 place-items-center overflow-hidden rounded-2xl border border-line bg-paper text-ink shadow-[var(--ring-inset),0_1px_2px_rgb(0_0_0/0.05)] transition-colors hover:bg-sunken ${className}`}
     >
       <AnimatePresence mode="popLayout" initial={false}>
         <motion.svg

@@ -58,7 +58,7 @@ export function Coin({ spec, size = 88 }: { spec: CoinSpec; size?: number }) {
           boxShadow: `inset 0 ${size * 0.025}px 0 rgba(255,255,255,.45), inset 0 -${size * 0.03}px 0 rgba(0,0,0,.14), 0 0 0 ${size * 0.018}px rgba(0,0,0,.12)`,
         }}
       >
-        <span className="font-display font-bold leading-none tracking-[-0.06em]" style={{ color: spec.ink, fontSize: fs }}>
+        <span className="font-display font-semibold leading-none tracking-[-0.06em]" style={{ color: spec.ink, fontSize: fs }}>
           {spec.sym}
         </span>
       </div>
@@ -88,11 +88,11 @@ export function Coin({ spec, size = 88 }: { spec: CoinSpec; size?: number }) {
 
 export function Currency() {
   return (
-    <section id="currency" className="relative overflow-x-clip py-24 md:py-32">
+    <section id="currency" className="relative overflow-x-clip py-16 md:py-24">
       <div className="mx-auto grid max-w-[1240px] items-center gap-10 px-4 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:gap-6">
         <div className="max-w-[520px]">
           <Reveal>
-            <Eyebrow index="03">Pay your way</Eyebrow>
+            <Eyebrow>Pay your way</Eyebrow>
           </Reveal>
           <h2 className="display mt-5 text-[clamp(40px,5.2vw,76px)] leading-[0.98]">
             <SplitWords text="Buy it in your own currency." />
@@ -111,7 +111,7 @@ export function Currency() {
           <Reveal delay={0.35} className="mt-9 flex flex-wrap gap-1.5">
             {Object.entries(COINS).map(([code, c]) => (
               <span key={code} className="inline-flex h-8 items-center gap-1.5 rounded-full border border-line bg-paper pl-1 pr-3 text-[12.5px] font-medium text-ink-2">
-                <span className="grid size-6 place-items-center rounded-full font-display text-[10px] font-bold tracking-[-0.04em]" style={{ background: c.face, color: c.ink }}>
+                <span className="grid size-6 place-items-center rounded-full font-display text-[10px] font-semibold" style={{ background: c.face, color: c.ink }}>
                   {c.sym.length > 2 ? c.sym.slice(0, 2) : c.sym}
                 </span>
                 {code}
@@ -337,7 +337,7 @@ function Checkout({ step, reduce }: { step: number; reduce: boolean }) {
       className="relative w-[318px] rounded-[26px] bg-paper p-4 shadow-[var(--shadow-overlay)] ring-1 ring-line"
     >
       <div className="flex items-center justify-between">
-        <p className="font-display text-[19px] font-bold tracking-[-0.04em] text-ink">Checkout</p>
+        <p className="font-display text-[19px] font-semibold tracking-[-0.04em] text-ink">Checkout</p>
 
         {/* currency picker */}
         <div className="relative">
@@ -396,14 +396,14 @@ function Checkout({ step, reduce }: { step: number; reduce: boolean }) {
           <p className="text-[13.5px] font-semibold tracking-tight text-ink">Ankara tote</p>
           <p className="mt-0.5 text-[11.5px] text-muted">kemi.closet · Lagos</p>
         </div>
-        <span className="rounded-full bg-paper px-2 py-1 text-[10.5px] font-semibold text-ink-2 shadow-hairline">x1</span>
+        <span className="rounded-full bg-paper px-2 py-1 text-[11px] font-semibold text-ink-2 shadow-hairline">x1</span>
       </div>
 
       {/* total */}
       <div className="mt-4 flex items-end justify-between px-1">
         <div>
           <p className="text-[12px] font-medium text-muted">Total</p>
-          <p className="mt-1 flex items-baseline font-display text-[42px] font-bold leading-none tracking-[-0.05em] text-ink">
+          <p className="mt-1 flex items-baseline font-display text-[42px] font-medium leading-none tracking-[-0.05em] text-ink">
             <AnimatePresence mode="popLayout" initial={false}>
               <motion.span
                 key={price.sym}
@@ -419,7 +419,7 @@ function Checkout({ step, reduce }: { step: number; reduce: boolean }) {
             <Odometer value={price.amount} />
           </p>
         </div>
-        <span className="mb-1 rounded-full bg-green-tint px-2 py-1 text-[10.5px] font-semibold text-green">No fees</span>
+        <span className="mb-1 rounded-full bg-green-tint px-2 py-1 text-[11px] font-semibold text-green">No fees</span>
       </div>
 
       {/* pay */}
@@ -464,7 +464,7 @@ function MiniCoin({ code }: { code: string }) {
   const c = COINS[code];
   const s = c.sym.length > 2 ? c.sym.slice(0, 2) : c.sym;
   return (
-    <span className="grid size-6 shrink-0 place-items-center rounded-full font-display text-[9.5px] font-bold tracking-[-0.04em] ring-2 ring-[#12a466]" style={{ background: c.face, color: c.ink }}>
+    <span className="grid size-6 shrink-0 place-items-center rounded-full font-display text-[9.5px] font-semibold ring-2 ring-[#12a466]" style={{ background: c.face, color: c.ink }}>
       {s}
     </span>
   );

@@ -143,11 +143,11 @@ function TileView({ tile, index, done, active }: { tile: Tile; index: number; do
       transition={{ type: "spring", stiffness: 120, damping: 18 }}
     >
       <div className={`absolute inset-0 overflow-hidden rounded-[28px] py-4 ${tile.side === "r" ? "pl-6 pr-4" : "pl-4 pr-6"}`}>
-        <span className={`inline-flex items-center gap-1.5 rounded-full ${soft} px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.16em]`}>
-          <span className={`size-1.5 rounded-full ${active ? "animate-pulse" : "opacity-50"}`} style={{ background: tile.ink }} />
+        <span className={`inline-flex items-center gap-1.5 rounded-full ${soft} px-2.5 py-1 font-mono text-[11px] font-semibold`}>
+          <span className={`size-1.5 rounded-full ${active ? "" : "opacity-50"}`} style={{ background: tile.ink }} />
           0{index + 1} · {STEP_LABELS[index]}
         </span>
-        <p className="mt-3 font-display text-[24px] font-bold leading-none tracking-[-0.045em]">{tile.title}</p>
+        <p className="mt-3 font-display text-[24px] font-medium leading-none tracking-[-0.045em]">{tile.title}</p>
         <div className="mt-4">{index === 0 ? <ShareBody done={done} soft={soft} /> : index === 1 ? <PayBody done={done} soft={soft} /> : index === 2 ? <HeldBody done={done} soft={soft} /> : <PaidBody done={done} />}</div>
       </div>
 
@@ -239,7 +239,7 @@ function PaidBody({ done }: { done: boolean }) {
       <div>
         <p className="text-[11px] font-semibold opacity-70">kemi.closet</p>
         <AnimatePresence mode="wait">
-          <motion.p key={done ? "y" : "n"} initial={{ y: 10, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: -10, opacity: 0 }} className="font-display text-[22px] font-bold tracking-[-0.05em]">
+          <motion.p key={done ? "y" : "n"} initial={{ y: 10, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: -10, opacity: 0 }} className="font-display text-[22px] font-semibold tracking-[-0.05em]">
             {done ? "₦45,000" : "Pending"}
           </motion.p>
         </AnimatePresence>
@@ -377,14 +377,14 @@ function ScreenShare() {
           {(["chat", "camera", "x"] as const).map((k) => (
             <div key={k} className="flex flex-col items-center gap-1 opacity-60">
               <AppTile kind={k} size={40} />
-              <span className="text-[10px] text-muted">{k === "chat" ? "WhatsApp" : k === "camera" ? "Instagram" : "X"}</span>
+              <span className="text-[11px] text-muted">{k === "chat" ? "WhatsApp" : k === "camera" ? "Instagram" : "X"}</span>
             </div>
           ))}
           <motion.div className="relative flex flex-col items-center gap-1" animate={{ scale: [1, 1, 1.12, 1] }} transition={{ duration: 0.6, delay: 1.05, times: [0, 0.3, 0.6, 1] }}>
             <span className="grid size-10 place-items-center rounded-[28%] bg-paper shadow-[var(--shadow-card)] ring-2 ring-green">
               <LogoMark size={24} />
             </span>
-            <span className="text-[10px] font-semibold text-green">Greep</span>
+            <span className="text-[11px] font-semibold text-green">Greep</span>
             <Tap delay={1.1} className="left-0.5 top-0.5" />
           </motion.div>
         </div>
@@ -402,14 +402,14 @@ function ScreenPay() {
   }, []);
   return (
     <div>
-      <p className="font-display text-[22px] font-bold tracking-[-0.04em] text-ink">Checkout</p>
+      <p className="font-display text-[22px] font-semibold tracking-[-0.04em] text-ink">Checkout</p>
       <div className="mt-3 flex items-center gap-3 rounded-2xl border border-line bg-paper p-2.5">
         <Tote className="size-14 rounded-xl" />
         <div className="flex-1">
           <p className="text-[13px] font-semibold text-ink">Ankara tote</p>
           <p className="text-[11px] text-muted">kemi.closet</p>
         </div>
-        <p className="font-display text-[16px] font-bold tracking-tight text-ink">₦45,000</p>
+        <p className="font-display text-[16px] font-semibold tracking-tight text-ink">₦45,000</p>
       </div>
       <div className="mt-3 space-y-2 text-[12px]">
         {[
@@ -454,7 +454,7 @@ function ScreenHeld() {
           <Lock size={30} strokeWidth={2.4} />
         </motion.span>
       </div>
-      <p className="mt-5 font-display text-[26px] font-bold tracking-[-0.05em] text-ink">₦45,000 held safe</p>
+      <p className="mt-5 font-display text-[26px] font-medium tracking-[-0.05em] text-ink">₦45,000 held safe</p>
       <p className="mt-1 text-[13px] text-muted">The seller gets it when it arrives.</p>
       <div className="mt-5 flex w-full justify-between rounded-2xl bg-sunken p-3 text-[11px] font-semibold">
         <span className="flex items-center gap-1 text-orange">
@@ -475,7 +475,7 @@ function ScreenPaid() {
       <motion.span initial={{ scale: 0, rotate: -30 }} animate={{ scale: 1, rotate: 0 }} transition={{ type: "spring", stiffness: 300, damping: 12 }} className="grid size-20 place-items-center rounded-3xl bg-sun/30 text-orange">
         <Package size={38} strokeWidth={2} />
       </motion.span>
-      <p className="mt-4 font-display text-[26px] font-bold tracking-[-0.05em] text-ink">Delivered</p>
+      <p className="mt-4 font-display text-[26px] font-medium tracking-[-0.05em] text-ink">Delivered</p>
       <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="mt-5 flex w-full items-center gap-3 rounded-2xl border border-line bg-paper p-3 text-left">
         <Blobatar name="kemi.closet" animate="always" expression={happy} hue={22} size={40} />
         <div className="flex-1">

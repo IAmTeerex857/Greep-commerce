@@ -30,7 +30,7 @@ export function Flywheel() {
     <section ref={ref} className="relative overflow-hidden py-16 md:py-24">
       <div className="mx-auto grid max-w-6xl items-center gap-16 px-4 md:grid-cols-2">
         <div>
-          <Eyebrow index="06">Loyalty</Eyebrow>
+          <Eyebrow>Loyalty</Eyebrow>
           <h2 className="display mt-5 text-[clamp(38px,5.4vw,72px)]">
             <SplitWords text="Know your customers." />{" "}
             <SplitWords text="Keep them coming back." delay={0.2} className="text-muted/70" />

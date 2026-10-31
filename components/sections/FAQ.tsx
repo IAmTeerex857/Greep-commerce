@@ -22,13 +22,13 @@ export const SELLER_FAQ: QA[] = [
   { q: "Where does Greep work?", a: "Nigeria, Ghana, Kenya and Malawi to start. Customers can pay from anywhere." },
 ];
 
-export function FAQ({ items, index = "07" }: { items: QA[]; index?: string }) {
+export function FAQ({ items }: { items: QA[] }) {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section id="faq" className="py-16 md:py-22">
+    <section id="faq" className="py-16 md:py-24">
       <div className="mx-auto grid max-w-6xl gap-12 px-4 md:grid-cols-[1fr_1.4fr]">
-        <div>
-          <Eyebrow index={index}>Questions</Eyebrow>
+        <div className="md:sticky md:top-28 md:self-start">
+          <Eyebrow>Questions</Eyebrow>
           <h2 className="display mt-5 text-[clamp(38px,5vw,64px)]">Good to know.</h2>
         </div>
         <div className="divide-y divide-line border-y border-line">
@@ -40,7 +40,7 @@ export function FAQ({ items, index = "07" }: { items: QA[]; index?: string }) {
                   <span className="font-display text-xl font-semibold tracking-[-0.03em] md:text-2xl">{item.q}</span>
                   <motion.span
                     animate={{ rotate: on ? 45 : 0 }}
-                    className={`grid size-9 shrink-0 place-items-center rounded-full text-xl transition-colors ${on ? "bg-green text-white" : "bg-sunken text-ink"}`}
+                    className={`grid size-9 shrink-0 place-items-center rounded-full text-xl transition-colors ${on ? "bg-ink text-canvas" : "bg-sunken text-ink"}`}
                   >
                     +
                   </motion.span>

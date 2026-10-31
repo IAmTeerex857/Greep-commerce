@@ -83,7 +83,7 @@ export function WaitlistForm({
               <Blobatar name={email} animate="always" expression={happy} size={56} />
             </motion.span>
             <div>
-              <p className="font-display text-lg font-bold tracking-[-0.03em]">You&apos;re on the list.</p>
+              <p className="font-display text-lg font-semibold tracking-[-0.03em]">You&apos;re on the list.</p>
               <p className="text-sm text-muted">This blob is yours now. We&apos;ll email you first.</p>
             </div>
           </motion.div>
@@ -116,7 +116,7 @@ export function WaitlistForm({
                   placeholder="you@email.com"
                   className="min-w-0 flex-1 bg-transparent text-[15px] text-ink outline-none placeholder:text-faint"
                 />
-                <Button type="submit" variant="green" size="md" interaction="slide-arrow" disabled={status === "loading"}>
+                <Button type="submit" variant="primary" size="md" interaction="slide-arrow" disabled={status === "loading"}>
                   {status === "loading" ? (
                     <TextLoader text="Joining" variant="decode" color="#ffffff" />
                   ) : (

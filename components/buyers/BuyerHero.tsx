@@ -514,7 +514,6 @@ function GlobeScene() {
     <div ref={wrap} aria-hidden="true" className="pointer-events-none relative w-full overflow-x-clip" style={{ height: H * scale, marginTop: -110 * scale }}>
       <div className="bh-stage absolute left-1/2 top-0 origin-top" style={{ width: W, height: H, transform: `translateX(-50%) scale(${scale})` }}>
         {/* soft backdrop */}
-        <div className="absolute left-1/2 top-[70px] size-[760px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,var(--bh-halo),transparent)]" />
         <div className="dot-grid absolute inset-x-0 top-[40px] h-[720px] [mask-image:radial-gradient(closest-side,black,transparent)] opacity-70" />
 
         {/* back halves of the orbit rings */}
@@ -684,8 +683,8 @@ function CardView({ id, toast }: { id: CardId; toast: boolean }) {
             </div>
             <div className="min-w-0 flex-1 pt-0.5 leading-tight">
               <p className="truncate text-[13px] font-semibold tracking-tight text-ink">Ankara tote</p>
-              <p className="mt-0.5 font-display text-[18px] font-bold tracking-[-0.045em] text-ink">₦45,000</p>
-              <p className="mt-1.5 flex items-center gap-1.5 text-[10.5px] font-medium text-muted">
+              <p className="mt-0.5 font-display text-[18px] font-semibold tracking-[-0.045em] text-ink">₦45,000</p>
+              <p className="mt-1.5 flex items-center gap-1.5 text-[11px] font-medium text-muted">
                 <AppTile kind="pin" size={15} className="!shadow-none" /> Found on Pinterest
               </p>
             </div>
@@ -701,8 +700,8 @@ function CardView({ id, toast }: { id: CardId; toast: boolean }) {
             </div>
             <div className="min-w-0 flex-1 pt-0.5 leading-tight">
               <p className="truncate text-[13px] font-semibold tracking-tight text-ink">Court sneakers</p>
-              <p className="mt-0.5 font-display text-[18px] font-bold tracking-[-0.045em] text-ink">KSh 8,200</p>
-              <p className="mt-1.5 flex items-center gap-1.5 text-[10.5px] font-medium text-muted">
+              <p className="mt-0.5 font-display text-[18px] font-semibold tracking-[-0.045em] text-ink">KSh 8,200</p>
+              <p className="mt-1.5 flex items-center gap-1.5 text-[11px] font-medium text-muted">
                 <AppTile kind="video" size={15} className="!shadow-none" /> Found on TikTok
               </p>
             </div>
@@ -726,7 +725,7 @@ function CardView({ id, toast }: { id: CardId; toast: boolean }) {
             </div>
             <div className="leading-tight">
               <p className="text-[13px] font-semibold tracking-tight text-ink">3 sellers found</p>
-              <p className="mt-0.5 text-[10.5px] text-muted">Best price picked</p>
+              <p className="mt-0.5 text-[11px] text-muted">Best price picked</p>
             </div>
           </div>
           <div className="mt-2.5 flex items-center justify-between rounded-[10px] bg-sunken px-2.5 py-1.5 text-[11px]">
@@ -744,10 +743,10 @@ function CardView({ id, toast }: { id: CardId; toast: boolean }) {
             </span>
             <div className="leading-tight">
               <p className="text-[13px] font-semibold tracking-tight text-ink">Paid in GH₵</p>
-              <p className="mt-0.5 font-display text-[16px] font-bold tracking-[-0.04em] text-ink">GH₵ 350.00</p>
+              <p className="mt-0.5 font-display text-[16px] font-semibold tracking-[-0.04em] text-ink">GH₵ 350.00</p>
             </div>
           </div>
-          <p className="mt-2 text-[10.5px] font-medium text-green">No need to convert</p>
+          <p className="mt-2 text-[11px] font-medium text-green">No need to convert</p>
         </Shell>
       );
     case "delivered":
@@ -759,7 +758,7 @@ function CardView({ id, toast }: { id: CardId; toast: boolean }) {
             </span>
             <div className="leading-tight">
               <p className="text-[13px] font-semibold tracking-tight text-ink">Delivered today</p>
-              <p className="mt-0.5 text-[10.5px] text-muted">Lagos, 2:14 pm</p>
+              <p className="mt-0.5 text-[11px] text-muted">Lagos, 2:14 pm</p>
             </div>
           </div>
           <div className="mt-2.5 flex gap-1">
@@ -778,7 +777,7 @@ function CardView({ id, toast }: { id: CardId; toast: boolean }) {
             </span>
             <div className="leading-tight">
               <p className="text-[13px] font-semibold tracking-tight text-ink">Saved</p>
-              <p className="text-[10.5px] text-muted">12 finds</p>
+              <p className="text-[11px] text-muted">12 finds</p>
             </div>
           </div>
         </Shell>
@@ -813,13 +812,13 @@ const CSS = `
   --bh-sea-hi:#ffffff; --bh-sea-mid:#f7fcf9; --bh-sea-lo:#dbeee4;
   --bh-dot:#0d965e; --bh-grid:rgb(13 150 94 / .14); --bh-rim:rgb(13 150 94 / .2);
   --bh-shade:rgb(10 59 39 / .1); --bh-atmo:rgb(13 150 94 / .13); --bh-floor:rgb(10 59 39 / .22);
-  --bh-ring:rgb(9 9 11 / .16); --bh-arc:#0d965e; --bh-halo:rgb(13 150 94 / .07);
+  --bh-ring:rgb(9 9 11 / .16); --bh-arc:#0d965e;
 }
 [data-theme="dark"] .bh-stage{
   --bh-sea-hi:#1c3b2c; --bh-sea-mid:#0e2219; --bh-sea-lo:#06100b;
   --bh-dot:#6fe7a7; --bh-grid:rgb(155 231 189 / .09); --bh-rim:rgb(111 231 167 / .32);
   --bh-shade:rgb(0 0 0 / .45); --bh-atmo:rgb(13 150 94 / .38); --bh-floor:rgb(0 0 0 / .6);
-  --bh-ring:rgb(255 255 255 / .16); --bh-arc:#c6f36d; --bh-halo:rgb(13 150 94 / .16);
+  --bh-ring:rgb(255 255 255 / .16); --bh-arc:#c6f36d;
 }
 .bh-stage .bh-dot{fill:none;stroke:var(--bh-dot);stroke-linecap:round}
 .bh-stage .bh-grid{fill:none;stroke:var(--bh-grid);stroke-width:1}

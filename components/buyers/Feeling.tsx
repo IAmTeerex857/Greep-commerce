@@ -34,12 +34,12 @@ export function Feeling() {
   return (
     <section id="feeling" className="relative overflow-x-clip py-16 md:py-24">
       <div className="mx-auto w-full max-w-6xl px-4">
-        <Eyebrow index="01">You know that feeling</Eyebrow>
+        <Eyebrow>You know that feeling</Eyebrow>
         <div className="mt-5 grid items-end gap-6 md:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] md:gap-12">
           <h2 className="display text-[clamp(40px,6.4vw,84px)]">
             <SplitWords text="You know" />
             <br />
-            <SplitWords text="that feeling!" delay={0.1} />
+            <SplitWords text="that feeling." delay={0.1} />
           </h2>
           <Reveal as="p" delay={0.15} className="max-w-md text-[17px] leading-relaxed text-muted md:pb-2">
             You&apos;re scrolling Pinterest, Instagram, TikTok, SHEIN, or just out in the real world.{" "}
@@ -116,7 +116,7 @@ function FeedCard() {
       {/* rotating word */}
       <div className="mt-6">
         <p className="text-[14px] text-white/50">Suddenly, you see it.</p>
-        <p className="relative mt-1 h-[1.05em] overflow-hidden font-display text-[clamp(38px,4.4vw,54px)] font-bold leading-none tracking-[-0.05em]" aria-label="That bag. Those shoes. That dress. That gadget.">
+        <p className="relative mt-1 h-[1.05em] overflow-hidden font-display text-[clamp(38px,4.4vw,54px)] font-medium leading-none tracking-[-0.05em]" aria-label="That bag. Those shoes. That dress. That gadget.">
           <AnimatePresence initial={false} mode="popLayout">
             <motion.span
               key={step}
@@ -289,7 +289,7 @@ function SearchCard() {
         animate={stamped && !reduce ? { x: [0, -5, 4, -2, 0] } : { x: 0 }}
         transition={{ duration: 0.35, delay: 0.32 }}
       >
-        <h3 className="font-display text-[clamp(30px,3.4vw,44px)] font-bold leading-[1] tracking-[-0.05em]">
+        <h3 className="font-display text-[clamp(30px,3.4vw,44px)] font-medium leading-[1] tracking-[-0.05em]">
           But how on earth do you find it?
         </h3>
         <p className="mt-3 text-[15px] text-white/55">And if your next instinct is to search&hellip;</p>
@@ -326,7 +326,7 @@ function SearchCard() {
                       </AnimatePresence>
                     </span>
                     <span className="min-w-0 flex-1">
-                      <span className={`relative inline-block text-[15px] font-medium tracking-[-0.01em] transition-colors duration-300 ${state === "todo" ? "text-white/45" : "text-white"}`}>
+                      <span className={`relative inline-block text-[15px] font-medium transition-colors duration-300 ${state === "todo" ? "text-white/45" : "text-white"}`}>
                         {p.label}
                         <motion.span
                           aria-hidden
@@ -367,11 +367,11 @@ function SearchCard() {
                 }
                 transition={stamped ? { type: "spring", stiffness: 520, damping: 22, delay: 0.15 } : { duration: 0.25 }}
               >
-                <span className="block font-display text-[clamp(22px,2.4vw,28px)] font-bold leading-[1.05] tracking-[-0.04em]">
+                <span className="block font-display text-[clamp(22px,2.4vw,28px)] font-medium leading-[1.05] tracking-[-0.04em]">
                   Kill that search.
                 </span>
-                <span className="block font-display text-[clamp(26px,2.9vw,34px)] font-bold leading-[1.05] tracking-[-0.045em] text-white">
-                  Just Greep it!
+                <span className="block font-display text-[clamp(26px,2.9vw,34px)] font-medium leading-[1.05] tracking-[-0.045em] text-white">
+                  Just Greep it.
                 </span>
               </motion.div>
             </div>
@@ -399,7 +399,7 @@ function SearchCard() {
           </div>
         </div>
 
-        <p className="sr-only">Kill that search. Just Greep it!</p>
+        <p className="sr-only">Kill that search. Just Greep it.</p>
       </motion.div>
     </Graphite>
   );
@@ -536,7 +536,7 @@ function CommentsScene() {
     <>
       <div className="flex items-center justify-between border-b border-white/[0.06] pb-2.5">
         <span className="text-[13px] font-semibold">1,204 comments</span>
-        <span className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-white/40">Newest</span>
+        <span className="font-mono text-[11px] text-white/40">Newest</span>
       </div>
       <div className="relative flex-1 overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_14%,black_86%,transparent)]">
         <div className="flex flex-col gap-2.5 pt-2" style={{ animation: reduce ? "none" : "feel-scroll 5.5s linear infinite" }}>
@@ -743,7 +743,7 @@ function GreepScene({ pressed }: { pressed: boolean }) {
           animate={pressed && !reduce ? { scale: [1, 1, 0.9, 1.04, 1] } : { scale: 1 }}
           transition={{ duration: 0.6, delay: 0.55, times: [0, 0.3, 0.5, 0.8, 1] }}
         >
-          <Button variant="green" size="md" interaction="sparkle" href="#how" icon={<LogoMark size={18} ink="#ffffff" />} forceHover={pressed}>
+          <Button variant="primary" size="md" interaction="sparkle" href="#how" icon={<LogoMark size={18} mono />} forceHover={pressed}>
             Greep it
           </Button>
           {pressed && !reduce && (

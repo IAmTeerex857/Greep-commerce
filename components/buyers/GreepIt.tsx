@@ -86,11 +86,11 @@ export function GreepIt() {
   return (
     <section id="how" className="relative overflow-x-clip py-16 md:py-24">
       <div ref={ref} className="mx-auto w-full max-w-6xl px-4">
-        <Eyebrow index="02">How it works</Eyebrow>
+        <Eyebrow>How it works</Eyebrow>
         <h2 className="display mt-5 text-[clamp(40px,6.4vw,84px)]">
           <SplitWords text="Once you see it," />
           <br />
-          <SplitWords text="Greep it!" delay={0.1} className="text-green" />
+          <SplitWords text="Greep it." delay={0.1} className="text-green" />
         </h2>
         <Reveal as="p" delay={0.1} className="mt-5 max-w-md text-[17px] leading-relaxed text-muted">
           Online or in real life, bring us what you saw.
@@ -132,7 +132,7 @@ export function GreepIt() {
               >
                 <span className="mt-1.5 font-mono text-[12px] text-green">0{i + 1}</span>
                 <div>
-                  <h3 className="font-display text-[22px] font-bold tracking-[-0.04em]">{s.tab}</h3>
+                  <h3 className="font-display text-[22px] font-semibold tracking-[-0.04em]">{s.tab}</h3>
                   <p className="mt-1 text-[15px] leading-relaxed text-muted">{s.line}</p>
                 </div>
               </motion.div>
@@ -149,7 +149,7 @@ export function GreepIt() {
 
         <Reveal className="mt-10 md:mt-14">
           <p className="display max-w-4xl text-[clamp(28px,4.2vw,52px)]">
-            If all you have is what you saw, <span className="text-green">you have all we need!</span>
+            If all you have is what you saw, <span className="text-green">you have all we need.</span>
           </p>
         </Reveal>
       </div>
@@ -359,7 +359,7 @@ function SharedFrom({ c }: { c: Clock }) {
               {s.tile}
               <span className="min-w-0 flex-1 leading-tight">
                 <span className="block truncate text-[13px] font-medium text-ink">{s.label}</span>
-                <span className="block truncate font-mono text-[10.5px] text-ink-3">{s.sub}</span>
+                <span className="block truncate font-mono text-[11px] text-ink-3">{s.sub}</span>
               </span>
               <AnimatePresence>
                 {picked && i === 0 && (
@@ -368,7 +368,7 @@ function SharedFrom({ c }: { c: Clock }) {
                     animate={{ scale: 1, opacity: 1 }}
                     exit={{ scale: 0, opacity: 0 }}
                     transition={{ type: "spring", stiffness: 500, damping: 18 }}
-                    className="flex items-center gap-1 rounded-full bg-green px-2 py-0.5 text-[10.5px] font-semibold text-white"
+                    className="flex items-center gap-1 rounded-full bg-green px-2 py-0.5 text-[11px] font-semibold text-white"
                   >
                     <Check size={10} strokeWidth={3} /> Sent
                   </motion.span>
@@ -454,8 +454,8 @@ function Composer({ c }: { c: Clock }) {
     <div className="relative overflow-hidden rounded-[18px] bg-paper shadow-[0_0_0_1px_var(--color-line-strong),0_24px_50px_-24px_rgb(0_0_0/0.35)]">
       <div className="flex items-center gap-2 border-b border-line px-3 py-2">
         <LogoMark size={18} ink="var(--color-ink)" />
-        <span className="text-[13px] font-semibold tracking-[-0.01em]">Greep</span>
-        <span className="ml-auto flex items-center gap-1.5 rounded-full bg-mint px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.12em] text-green-ink">
+        <span className="text-[13px] font-semibold">Greep</span>
+        <span className="ml-auto flex items-center gap-1.5 rounded-full bg-mint px-2 py-0.5 font-mono text-[11px] text-green-ink">
           <span className="size-1.5 rounded-full bg-green" />
           Finder
         </span>
@@ -489,7 +489,7 @@ function Composer({ c }: { c: Clock }) {
         <div className="min-w-0 flex-1 pt-0.5">
           <AnimatePresence>
             {attached && (
-              <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="font-mono text-[10.5px] text-ink-3">
+              <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="font-mono text-[11px] text-ink-3">
                 pin_4821.jpg
               </motion.p>
             )}
@@ -715,7 +715,7 @@ function Sellers({ c }: { c: Clock }) {
                       animate={{ scale: 1, opacity: 1 }}
                       exit={{ scale: 0, opacity: 0 }}
                       transition={{ type: "spring", stiffness: 500, damping: 16 }}
-                      className="flex items-center gap-1 rounded-full bg-green px-1.5 py-0.5 text-[10px] font-semibold text-white"
+                      className="flex items-center gap-1 rounded-full bg-green px-1.5 py-0.5 text-[11px] font-semibold text-white"
                     >
                       <Check size={10} strokeWidth={3} /> Best price
                     </motion.span>
@@ -768,7 +768,7 @@ function Order({ c }: { c: Clock }) {
           <span className="block truncate font-mono text-[11px] text-ink-3">{paid ? "lagos.bags · ₦42,000" : "Pick a seller first"}</span>
         </span>
         {paid && (
-          <motion.span initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="flex items-center gap-1 rounded-full bg-mint px-1.5 py-0.5 text-[10px] font-semibold text-green-ink">
+          <motion.span initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="flex items-center gap-1 rounded-full bg-mint px-1.5 py-0.5 text-[11px] font-semibold text-green-ink">
             <Lock size={9} /> Held safe
           </motion.span>
         )}

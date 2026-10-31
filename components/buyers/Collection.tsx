@@ -73,7 +73,7 @@ export function Collection() {
     <section id="saved" className="relative overflow-x-clip py-16 md:py-24">
       <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-4 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-10">
         <div className="max-w-xl">
-          <Eyebrow index="05">Saved finds</Eyebrow>
+          <Eyebrow>Saved finds</Eyebrow>
           <h2 className="display mt-5 text-[clamp(40px,5.6vw,76px)]">
             <SplitWords text="Saw it." />
             <br />
@@ -278,7 +278,7 @@ function FindCard({ find, slot, phase, reduce }: { find: Find; slot: number; pha
           <div className="flex items-end justify-between gap-2 px-2 pt-2.5">
             <div className="min-w-0">
               <p className="truncate text-[13px] font-medium text-muted">{find.name}</p>
-              <p className="font-display text-[22px] font-bold leading-tight tracking-[-0.04em]">{find.price}</p>
+              <p className="font-display text-[22px] font-semibold leading-tight tracking-[-0.04em]">{find.price}</p>
             </div>
             <HeartButton on={hearted} burst={front && phase === 2 && !reduce} />
           </div>
@@ -331,7 +331,7 @@ function FindCard({ find, slot, phase, reduce }: { find: Find; slot: number; pha
 
 function SpeechTag({ text, app, bg, fg }: Find["tag"]) {
   return (
-    <span className="relative inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-3.5 py-2 text-[14px] font-semibold tracking-[-0.01em] shadow-[0_8px_18px_-10px_rgb(0_0_0/0.5)]" style={{ background: bg, color: fg }}>
+    <span className="relative inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-3.5 py-2 text-[14px] font-semibold shadow-[0_8px_18px_-10px_rgb(0_0_0/0.5)]" style={{ background: bg, color: fg }}>
       {app && <BrandGlyph kind={app} size={13} />}
       {text}
       <span className="absolute -bottom-1.5 left-5 size-3.5 rotate-45 rounded-[3px]" style={{ background: bg }} />
@@ -432,7 +432,7 @@ function Board({
         </div>
       </div>
       <div className="mt-2.5 flex items-center justify-between px-1">
-        <p className="text-[15px] font-semibold tracking-[-0.02em]">{b.name}</p>
+        <p className="text-[15px] font-semibold">{b.name}</p>
         <span
           className="inline-flex items-center rounded-full px-2 py-0.5 font-mono text-[12px] font-semibold"
           style={{ background: `color-mix(in srgb, ${b.tone} 14%, transparent)`, color: b.tone }}
@@ -447,7 +447,7 @@ function Board({
             animate={{ opacity: 1, y: -14, scale: 1 }}
             exit={{ opacity: 0, y: -24 }}
             transition={{ type: "spring", stiffness: 420, damping: 18 }}
-            className="absolute -top-2 right-3 rounded-full px-2 py-0.5 font-mono text-[11px] font-bold text-white"
+            className="absolute -top-2 right-3 rounded-full px-2 py-0.5 font-mono text-[11px] font-semibold text-white"
             style={{ background: b.tone }}
           >
             +1

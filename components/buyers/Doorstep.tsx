@@ -20,7 +20,7 @@ export function Doorstep() {
   return (
     <section id="track" className="relative overflow-x-clip py-16 md:py-24">
       <div className="mx-auto w-full max-w-6xl px-4">
-        <Eyebrow index="04">Tracking</Eyebrow>
+        <Eyebrow>Tracking</Eyebrow>
         <div className="mt-5 grid gap-6 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] md:items-end md:gap-16">
           <h2 className="display text-[clamp(40px,6vw,76px)]">
             <SplitWords text="From checkout to your doorstep." />
@@ -38,7 +38,7 @@ export function Doorstep() {
               <DoorstepFigure onStep={setStep} />
             </div>
             <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex items-end justify-between gap-3 p-4 md:p-5">
-              <span className="hidden font-mono text-[10.5px] uppercase tracking-[0.18em] text-faint sm:inline">Live, every order</span>
+              <span className="hidden font-mono text-[11px] text-faint sm:inline">Live, every order</span>
               <span className="ml-auto inline-flex items-center gap-2 rounded-full border border-line bg-paper py-1 pl-2 pr-3 text-[12.5px] font-medium text-ink-2 shadow-[var(--shadow-hairline)]">
                 <span className="size-2 rounded-full transition-colors duration-500" style={{ background: STEP_TONE[step] }} />
                 <span className="font-mono text-[11px] text-muted">#GR-2041</span>

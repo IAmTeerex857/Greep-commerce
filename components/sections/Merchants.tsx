@@ -29,7 +29,7 @@ export function Merchants() {
       <div className="mx-auto max-w-6xl px-4">
         <div>
           <div>
-            <Eyebrow index="03">Your tools</Eyebrow>
+            <Eyebrow>Your tools</Eyebrow>
             <h2 className="display mt-5 max-w-3xl text-[clamp(40px,6.4vw,84px)]">
               <SplitWords text="Never lose a" />
               <br />
@@ -50,7 +50,7 @@ export function Merchants() {
                   role="tab"
                   aria-selected={on}
                   onClick={() => setStep(i)}
-                  className="relative -mr-3 flex h-14 shrink-0 items-center gap-2.5 pl-5 pr-10 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] transition-transform duration-300 hover:-translate-y-1 md:text-[12px]"
+                  className="relative -mr-3 flex h-14 shrink-0 items-center gap-2.5 pl-5 pr-10 font-mono text-[11px] font-semibold transition-transform duration-300 hover:-translate-y-1 md:text-[12px]"
                   style={{
                     background: t.bg,
                     color: t.ink,
@@ -204,7 +204,7 @@ function ClaimDemo() {
       <div className="mt-5 flex items-center gap-4">
         <Blobatar name="kemi.closet" animate="always" expression={claimed ? happy : notified ? surprised : idle} hue={22} size={64} />
         <div>
-          <p className="font-display text-3xl font-bold tracking-[-0.05em]">₦45,000</p>
+          <p className="font-display text-3xl font-medium tracking-[-0.05em]">₦45,000</p>
           <AnimatePresence mode="wait">
             <motion.p key={claimed ? "c" : "w"} initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -4 }} className={`text-[13px] ${claimed ? "font-semibold text-green" : "text-muted"}`}>
               {claimed ? "Store live. Order confirmed." : "Waiting for you. 47:59 left"}
@@ -301,7 +301,7 @@ function PriceDemo() {
           className="mt-auto flex items-center justify-between rounded-2xl bg-mint p-3"
         >
           <span className="text-[13px] font-semibold text-green-ink">Your price</span>
-          <span className="font-display text-xl font-bold tracking-[-0.04em] text-green-ink">
+          <span className="font-display text-xl font-semibold tracking-[-0.04em] text-green-ink">
             <s className="mr-2 text-sm font-medium opacity-50">₦45,000</s>₦40,500
           </span>
         </motion.div>

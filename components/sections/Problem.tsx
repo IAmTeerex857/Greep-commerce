@@ -69,7 +69,7 @@ function Head({ app, name, meta, dark }: { app: Kind; name: string; meta?: React
   return (
     <div className="flex items-center gap-2.5">
       <AppTile kind={app} size={24} />
-      <span className="text-[12.5px] font-semibold tracking-[-0.01em]">{name}</span>
+      <span className="text-[12.5px] font-semibold">{name}</span>
       {meta && <span className={`ml-auto text-[11px] ${dark ? "text-white/45" : "text-muted"}`}>{meta}</span>}
     </div>
   );
@@ -106,14 +106,14 @@ const CARDS: CardDef[] = [
           { n: "T", c: "#7c6cf2", who: "Tolu", msg: "Did she reply?", u: 1 },
         ].map((r) => (
           <div key={r.who} className="mt-3 flex items-center gap-2.5">
-            <span className="grid size-7 place-items-center rounded-full text-[11px] font-bold text-white" style={{ background: r.c }}>
+            <span className="grid size-7 place-items-center rounded-full text-[11px] font-semibold text-white" style={{ background: r.c }}>
               {r.n}
             </span>
             <span className="min-w-0 flex-1">
               <span className="block text-[12px] font-semibold">{r.who}</span>
               <span className="block truncate text-[11px] text-white/50">{r.msg}</span>
             </span>
-            <span className="grid size-[18px] place-items-center rounded-full bg-[#25c06a] text-[10px] font-bold text-white">{r.u}</span>
+            <span className="grid size-[18px] place-items-center rounded-full bg-[#25c06a] text-[11px] font-semibold text-white">{r.u}</span>
           </div>
         ))}
       </>
@@ -131,7 +131,7 @@ const CARDS: CardDef[] = [
         <div className="mt-3 flex flex-col gap-1.5">
           <span className="self-end rounded-2xl rounded-br-md bg-ink px-3 py-1.5 text-[12.5px] text-canvas">How much is this one?</span>
           <span className="self-start rounded-2xl rounded-bl-md bg-sunken px-3 py-1.5 text-[12.5px]">DM for price 👀</span>
-          <span className="self-end text-[10.5px] text-muted">Seen</span>
+          <span className="self-end text-[11px] text-muted">Seen</span>
         </div>
       </>
     ),
@@ -145,18 +145,18 @@ const CARDS: CardDef[] = [
     body: (
       <>
         <div className="flex items-center gap-2.5">
-          <span className="grid size-6 place-items-center rounded-[7px] bg-white/10 text-[12px] font-bold">₦</span>
+          <span className="grid size-6 place-items-center rounded-[7px] bg-white/10 text-[12px] font-semibold">₦</span>
           <span className="text-[12.5px] font-semibold">Bank transfer</span>
           <span className="ml-auto text-[11px] text-white/45">now</span>
         </div>
-        <p className="mt-3 font-display text-[28px] font-bold leading-none tracking-[-0.05em]">₦45,000</p>
+        <p className="mt-3 font-display text-[28px] font-medium leading-none tracking-[-0.05em]">₦45,000</p>
         <p className="mt-1.5 text-[11.5px] text-white/55">to kemi.closet · “pay first, then I ship”</p>
         <div className="relative mt-4 h-1.5 rounded-full bg-white/15">
           <div className="absolute inset-y-0 left-0 w-[78%] rounded-full bg-white/70" />
           <span className="absolute left-[78%] top-1/2 size-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white shadow-[0_0_0_4px_rgba(255,255,255,.15)]" />
           <span className="absolute right-0 top-1/2 size-3 -translate-y-1/2 rounded-[3px] border-2 border-white/60" />
         </div>
-        <div className="mt-3 flex justify-between text-[10.5px] text-white/45">
+        <div className="mt-3 flex justify-between text-[11px] text-white/45">
           <span>No receipt</span>
           <span>No refund</span>
         </div>
@@ -172,7 +172,7 @@ const CARDS: CardDef[] = [
     body: (
       <>
         <Head app="video" name="Comments" />
-        <p className="mt-3 font-display text-[30px] font-bold leading-none tracking-[-0.05em]">
+        <p className="mt-3 font-display text-[30px] font-medium leading-none tracking-[-0.05em]">
           38<span className="ml-1 text-[12px] font-medium tracking-normal opacity-60">comments</span>
         </p>
         <p className="mt-1 text-[11.5px] opacity-70">all asking “how much?”</p>
@@ -180,7 +180,7 @@ const CARDS: CardDef[] = [
           {["#e3574a", "#e3574a", "#7c6cf2"].map((c, i) => (
             <span key={i} className="size-3 rounded-[4px]" style={{ background: c }} />
           ))}
-          <span className="ml-1 text-[10.5px] opacity-60">Ade, Zee and 36 more</span>
+          <span className="ml-1 text-[11px] opacity-60">Ade, Zee and 36 more</span>
         </div>
       </>
     ),
@@ -197,7 +197,7 @@ const CARDS: CardDef[] = [
           <span className="size-8 rounded-full bg-orange" />
           <span>
             <span className="block text-[12.5px] font-semibold">drip.lagos</span>
-            <span className="block text-[10.5px] text-muted">Sneakers · Lagos</span>
+            <span className="block text-[11px] text-muted">Sneakers · Lagos</span>
           </span>
         </div>
         <p className="mt-2.5 text-[12px] leading-snug">Price in bio 👆<br />DM to order 📩</p>
@@ -220,7 +220,7 @@ const CARDS: CardDef[] = [
       <>
         <Head app="camera" name="you" meta="1h" dark />
         <span className="mt-3 inline-block rounded-2xl rounded-br-md bg-white/12 px-3 py-1.5 text-[12px]">Is it still available?</span>
-        <p className="mt-3 font-display text-[22px] font-bold tracking-[-0.04em] text-[#d6b4ff]">Seen 2h ago</p>
+        <p className="mt-3 font-display text-[22px] font-semibold tracking-[-0.04em] text-[#d6b4ff]">Seen 2h ago</p>
         <Dots className="mt-1.5 text-white/50" />
       </>
     ),
@@ -236,13 +236,13 @@ const CARDS: CardDef[] = [
         <Head app="chat" name="Kemi" meta="9m" />
         <span className="mt-3 inline-block rounded-2xl rounded-bl-md bg-sunken px-3 py-1.5 text-[12.5px]">Send me your account details</span>
         <div className="mt-2.5 rounded-xl border border-line bg-sunken/60 p-2.5">
-          <p className="text-[10px] uppercase tracking-[0.14em] text-muted">Account no.</p>
+          <p className="text-[11px] text-muted">Account no.</p>
           <div className="mt-0.5 flex items-center justify-between">
             <span className="font-mono text-[15px] font-semibold tracking-wider">0123 •••• 789</span>
-            <span className="rounded-md bg-paper px-1.5 py-0.5 text-[10px] font-semibold ring-1 ring-line">Copy</span>
+            <span className="rounded-md bg-paper px-1.5 py-0.5 text-[11px] font-semibold ring-1 ring-line">Copy</span>
           </div>
         </div>
-        <p className="mt-2 text-[10.5px] font-medium text-rose">No buyer protection</p>
+        <p className="mt-2 text-[11px] font-medium text-rose">No buyer protection</p>
       </>
     ),
   },
@@ -256,17 +256,17 @@ const CARDS: CardDef[] = [
       <>
         <div className="flex items-start justify-between">
           <Head app="chat" name="Order chat" />
-          <span className="font-display text-[26px] font-bold leading-none tracking-[-0.05em] text-orange">
+          <span className="font-display text-[26px] font-medium leading-none tracking-[-0.05em] text-orange">
             6<span className="ml-0.5 text-[12px] font-medium tracking-normal">days</span>
           </span>
         </div>
-        <p className="mt-2 text-[15px] font-semibold tracking-[-0.02em]">Where is my order?</p>
+        <p className="mt-2 text-[15px] font-semibold">Where is my order?</p>
         <div className="mt-3 flex gap-1.5">
           <span className="h-1.5 flex-1 rounded-full bg-orange" />
           <span className="h-1.5 flex-1 rounded-full bg-orange/80" />
           <span className="h-1.5 flex-1 rounded-full bg-sunken" />
         </div>
-        <div className="mt-3 flex justify-between text-[10.5px] text-muted">
+        <div className="mt-3 flex justify-between text-[11px] text-muted">
           <span>Ankara tote · 1 item</span>
           <span>Seller quiet</span>
         </div>
@@ -282,7 +282,7 @@ const CARDS: CardDef[] = [
     body: (
       <>
         <Head app="video" name="TikTok" meta="now" dark />
-        <p className="mt-3 font-display text-[30px] font-bold leading-none tracking-[-0.05em]">
+        <p className="mt-3 font-display text-[30px] font-medium leading-none tracking-[-0.05em]">
           12.4K<span className="ml-1 text-[12px] font-medium tracking-normal text-white/50">views</span>
         </p>
         <svg viewBox="0 0 180 40" className="mt-2 h-9 w-full" fill="none" aria-hidden>
@@ -312,7 +312,7 @@ const CARDS: CardDef[] = [
       <>
         <Head app="x" name="you" meta="2d" />
         <span className="mt-3 inline-block rounded-2xl rounded-br-md bg-ink px-3 py-1.5 text-[12px] text-canvas">Do you deliver to Accra?</span>
-        <span className="mt-3 flex w-fit items-center gap-1.5 rounded-full bg-sunken px-2.5 py-1 text-[10.5px] font-medium text-muted">
+        <span className="mt-3 flex w-fit items-center gap-1.5 rounded-full bg-sunken px-2.5 py-1 text-[11px] font-medium text-muted">
           <span className="size-1.5 rounded-full bg-faint" />
           No reply
         </span>
@@ -390,9 +390,9 @@ export function Problem() {
   const activeCol = CARDS.find((c) => c.id === active)!.col;
 
   return (
-    <section ref={section} className="relative overflow-hidden py-16 md:py-22">
+    <section ref={section} className="relative overflow-hidden py-16 md:py-24">
       <div className="mx-auto max-w-4xl px-4 text-center">
-        <Eyebrow index="01" className="justify-center">
+        <Eyebrow className="justify-center">
           The problem
         </Eyebrow>
         <h2 className="display mt-5 text-[clamp(40px,7vw,92px)]">
@@ -476,7 +476,7 @@ export function Problem() {
                           opacity: a === 2 ? 0.55 : 1,
                           filter: a === 2 ? "blur(1.4px) saturate(.6)" : "none",
                           boxShadow: lifted
-                            ? "0 0 0 2px #ee6f38, 0 0 0 7px rgba(238,111,56,.16), 0 30px 60px -20px rgba(238,111,56,.55)"
+                            ? "0 0 0 2px #ee6f38, 0 24px 48px -20px rgb(0 0 0 / .28)"
                             : "var(--shadow-pop)",
                         }}
                       >
@@ -513,10 +513,10 @@ function Notification({ side, n, k, low }: { side: "left" | "right"; n: Notif; k
           <AppTile kind={n.app} size={34} />
           <div className="min-w-0 flex-1">
             <div className="flex items-center justify-between">
-              <span className="text-[10.5px] font-semibold uppercase tracking-[0.12em] text-muted">{n.label}</span>
-              <span className="text-[10.5px] text-muted">now</span>
+              <span className="text-[11px] font-semibold text-muted">{n.label}</span>
+              <span className="text-[11px] text-muted">now</span>
             </div>
-            <p className="mt-0.5 text-[13.5px] font-semibold tracking-[-0.01em] text-ink">{n.title}</p>
+            <p className="mt-0.5 text-[13.5px] font-semibold text-ink">{n.title}</p>
             <p className="truncate text-[12.5px] text-ink-2">{n.body}</p>
           </div>
         </motion.div>

@@ -54,7 +54,7 @@ export function FinalCTA({ audience = "seller" }: { audience?: "buyer" | "seller
           <span className="absolute bottom-6 left-1/2 top-6 -ml-[7px] w-[14px] rounded-full bg-ink" />
           <span className="absolute bottom-0 left-1/2 h-6 w-56 -translate-x-1/2 rounded-[50%] bg-ink" />
           <Cloud className="left-[-40px] top-[150px]" />
-          <Cloud className="right-[-50px] top-[330px] scale-90" delay={1.2} />
+          <Cloud className="right-[-50px] top-[330px] scale-90" />
           <div className="absolute inset-x-0 top-12 flex flex-col items-center gap-4">
             {c.signs.map((s, i) => (
               <motion.a
@@ -63,9 +63,9 @@ export function FinalCTA({ audience = "seller" }: { audience?: "buyer" | "seller
                 initial={{ opacity: 0, x: i % 2 ? 80 : -80, rotate: s.rot * 4 }}
                 whileInView={{ opacity: 1, x: s.x, rotate: s.rot }}
                 viewport={{ once: true }}
-                whileHover={{ rotate: 0, scale: 1.05, transition: { type: "spring", stiffness: 400, damping: 12 } }}
+                whileHover={{ rotate: 0, transition: { duration: 0.2, ease: [0.16, 1, 0.3, 1] } }}
                 transition={{ type: "spring", stiffness: 120, damping: 14, delay: i * 0.08 }}
-                className={`relative flex h-[72px] w-[300px] items-center justify-center gap-3 font-display text-[28px] font-extrabold tracking-[-0.04em] ${s.round ? "rounded-full" : "rounded-lg"}`}
+                className={`relative flex h-[72px] w-[300px] items-center justify-center gap-3 font-display text-[28px] font-semibold tracking-[-0.04em] ${s.round ? "rounded-full" : "rounded-lg"}`}
                 style={{ background: s.bg, color: s.ink ?? "#0a0a0a", boxShadow: "0 6px 0 rgba(0,0,0,.22)" }}
               >
                 <span className="flex">{s.icon}</span>
@@ -110,7 +110,7 @@ export function FinalCTA({ audience = "seller" }: { audience?: "buyer" | "seller
             ))}
           </nav>
         </div>
-        <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">© 2026 Greep. All rights reserved.</p>
+        <p className="mt-8 font-mono text-[11px] text-muted">© 2026 Greep. All rights reserved.</p>
       </footer>
     </section>
   );
@@ -158,18 +158,10 @@ function Bubble({
   );
 }
 
-function Cloud({ className = "", delay = 0 }: { className?: string; delay?: number }) {
+function Cloud({ className = "" }: { className?: string }) {
   return (
-    <motion.svg
-      width="120"
-      height="50"
-      viewBox="0 0 120 50"
-      className={`absolute text-ink ${className}`}
-      animate={{ x: [0, 14, 0] }}
-      transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay }}
-      aria-hidden
-    >
+    <svg width="120" height="50" viewBox="0 0 120 50" className={`absolute text-ink ${className}`} aria-hidden>
       <path d="M14 50a14 14 0 0 1 0-28h8a22 22 0 0 1 42-6 18 18 0 0 1 30 10h12a12 12 0 0 1 0 24z" fill="currentColor" />
-    </motion.svg>
+    </svg>
   );
 }

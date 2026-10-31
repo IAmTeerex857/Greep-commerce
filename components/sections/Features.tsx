@@ -22,7 +22,7 @@ export function Features() {
     <section id="features" className="relative py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-4">
         <div className="max-w-3xl">
-          <Eyebrow index="04">Features</Eyebrow>
+          <Eyebrow>Features</Eyebrow>
           <h2 className="display mt-5 text-[clamp(40px,6.4vw,84px)]">
             <SplitWords text="Everything you need" />
             <br />
@@ -94,7 +94,7 @@ function Tile({
             <div className="flex flex-wrap items-center gap-2">
               <h3 className="font-display text-[20px] font-semibold tracking-[-0.035em]">{title}</h3>
               {tag && (
-                <span className="whitespace-nowrap rounded-full bg-mint px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-green-ink">
+                <span className="whitespace-nowrap rounded-full bg-mint px-2 py-0.5 font-mono text-[11px] text-green-ink">
                   {tag}
                 </span>
               )}
@@ -247,7 +247,7 @@ function EscrowScene() {
         }}
         transition={{ duration: flying ? 0.95 : 0.4, ease: "easeInOut" }}
       >
-        <span className="grid size-[30px] place-items-center rounded-full bg-green text-[13px] font-bold text-white shadow-[inset_0_-3px_0_rgb(0_0_0/0.22),0_6px_14px_-4px_rgb(13_150_94/0.7)]">
+        <span className="grid size-[30px] place-items-center rounded-full bg-green text-[13px] font-semibold text-white shadow-[inset_0_-3px_0_rgb(0_0_0/0.22),0_6px_14px_-4px_rgb(13_150_94/0.7)]">
           $
         </span>
       </motion.div>
@@ -258,7 +258,7 @@ function EscrowScene() {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: -6 }}
             exit={{ opacity: 0 }}
-            className="absolute left-[86%] top-[16%] -translate-x-1/2 font-display text-[15px] font-bold tracking-tight text-green"
+            className="absolute left-[86%] top-[16%] -translate-x-1/2 font-display text-[15px] font-semibold tracking-tight text-green"
           >
             +₦45,000
           </motion.span>
@@ -349,7 +349,7 @@ function PriceScene() {
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: -14, opacity: 0 }}
                   transition={spring}
-                  className="font-display text-[20px] font-bold tracking-[-0.04em]"
+                  className="font-display text-[20px] font-semibold tracking-[-0.04em]"
                 >
                   {step === 4 ? "₦40,500" : "₦45,000"}
                 </motion.span>
@@ -434,10 +434,7 @@ function StoreScene() {
                 transition={{ type: "spring", stiffness: 500, damping: 18 }}
                 className="flex items-center gap-1 rounded-full bg-mint px-2 py-1 text-[11px] font-semibold text-green-ink"
               >
-                <span className="relative flex size-1.5">
-                  <span className="absolute inset-0 animate-ping rounded-full bg-green" />
-                  <span className="relative size-1.5 rounded-full bg-green" />
-                </span>
+                <span className="size-1.5 rounded-full bg-green" />
                 Live
               </motion.span>
             )}
@@ -462,7 +459,7 @@ function StoreScene() {
                     className="absolute inset-0"
                     style={{ background: p.bg }}
                   >
-                    <span className="absolute bottom-1 left-1 rounded-md bg-black/55 px-1.5 py-0.5 text-[10px] font-semibold text-white backdrop-blur">{p.price}</span>
+                    <span className="absolute bottom-1 left-1 rounded-md bg-black/55 px-1.5 py-0.5 text-[11px] font-semibold text-white backdrop-blur">{p.price}</span>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -529,7 +526,7 @@ function CurrencyScene() {
         {FX.map((f, i) => (
           <motion.span
             key={f.from}
-            className="absolute left-0 grid size-10 place-items-center rounded-full border border-line bg-paper font-display text-[16px] font-bold shadow-[var(--shadow-card)]"
+            className="absolute left-0 grid size-10 place-items-center rounded-full border border-line bg-paper font-display text-[16px] font-semibold shadow-[var(--shadow-card)]"
             style={{ top: CHIP_Y[i] }}
             animate={{ scale: i === step ? 1.12 : 1, opacity: i === step ? 1 : 0.55 }}
             transition={spring}
@@ -541,7 +538,7 @@ function CurrencyScene() {
         {/* travelling chip */}
         <motion.span
           key={`fly-${step}`}
-          className="absolute left-0 z-10 grid size-8 place-items-center rounded-full bg-ink font-display text-[13px] font-bold text-canvas"
+          className="absolute left-0 z-10 grid size-8 place-items-center rounded-full bg-ink font-display text-[13px] font-semibold text-canvas"
           style={{ top: CHIP_Y[step] + 4 }}
           initial={{ x: 4, y: 0, opacity: 0, scale: 0.6 }}
           animate={{ x: [4, 110, 190], y: [0, -46 + (1 - step) * 10, 90 - CHIP_Y[step] - 20], opacity: [0, 1, 0], scale: [0.6, 1, 0.5] }}
@@ -557,7 +554,7 @@ function CurrencyScene() {
             initial={{ rotateY: 90, scale: 0.9 }}
             animate={{ rotateY: 0, scale: [0.9, 1.14, 1] }}
             transition={{ duration: 0.45, ease }}
-            className="grid size-16 place-items-center rounded-full bg-green font-display text-[20px] font-bold tracking-tight text-white shadow-[inset_0_-4px_0_rgb(0_0_0/0.22),0_12px_28px_-10px_rgb(13_150_94/0.8)]"
+            className="grid size-16 place-items-center rounded-full bg-green font-display text-[20px] font-semibold tracking-tight text-white shadow-[inset_0_-4px_0_rgb(0_0_0/0.22),0_12px_28px_-10px_rgb(13_150_94/0.8)]"
           >
             {coin.to}
           </motion.div>
@@ -753,7 +750,7 @@ function BuyersScene({ step, innerRef }: { step: number; innerRef: React.Ref<HTM
         <span>Sample store · 30 days</span>
       </div>
       <div className="mt-1 flex items-baseline gap-2">
-        <motion.span key={total} initial={{ y: 8, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="font-display text-[26px] font-bold tracking-[-0.04em]">
+        <motion.span key={total} initial={{ y: 8, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="font-display text-[26px] font-medium tracking-[-0.04em]">
           {total * 3} orders
         </motion.span>
       </div>

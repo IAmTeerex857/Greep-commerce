@@ -77,7 +77,7 @@ export function Rewards() {
     <section id="rewards" className="relative overflow-x-clip py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-4">
         <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
-          <Eyebrow index="06">Rewards</Eyebrow>
+          <Eyebrow>Rewards</Eyebrow>
           <h2 className="display mt-5 text-[clamp(36px,5.2vw,68px)]">
             <SplitWords text="Every purchase comes with" />
             <br className="hidden sm:block" />{" "}
@@ -177,12 +177,6 @@ function Orbit({ rot, active, phase, reduce, k }: { rot: MotionValue<number>; ac
   const m = MERCHANTS[active];
   return (
     <div className="relative size-full">
-      {/* glow */}
-      <div
-        aria-hidden
-        className="absolute inset-[60px] rounded-full"
-        style={{ background: "radial-gradient(closest-side, color-mix(in srgb, var(--color-green) 16%, transparent), transparent 75%)" }}
-      />
 
       {/* rings */}
       <svg width={S} height={S} className="absolute inset-0" aria-hidden>
@@ -256,7 +250,7 @@ function Orbit({ rot, active, phase, reduce, k }: { rot: MotionValue<number>; ac
               initial={{ opacity: 0, y: 0, scale: 0.7 }}
               animate={{ opacity: [0, 1, 1, 0], y: -54, scale: 1 }}
               transition={{ duration: 1.25, ease: "easeOut", times: [0, 0.15, 0.7, 1] }}
-              className="absolute left-1/2 top-0 -translate-x-1/2 whitespace-nowrap rounded-full bg-lime px-3 py-1 font-mono text-[13px] font-bold text-[#0a0a0a] shadow-card"
+              className="absolute left-1/2 top-0 -translate-x-1/2 whitespace-nowrap rounded-full bg-lime px-3 py-1 font-mono text-[13px] font-semibold text-[#0a0a0a] shadow-card"
             >
               +{m.pts} pts
             </motion.span>
@@ -329,7 +323,7 @@ function Coin({ size = 22 }: { size?: number }) {
         width: size,
         height: size,
         background: "#c6f36d",
-        boxShadow: `inset 0 0 0 ${Math.max(1.5, size * 0.07)}px #0a0a0a, inset 0 -${size * 0.1}px 0 rgb(10 10 10 / .14), 0 0 14px rgb(198 243 109 / .55)`,
+        boxShadow: `inset 0 0 0 ${Math.max(1.5, size * 0.07)}px #0a0a0a, inset 0 -${size * 0.1}px 0 rgb(10 10 10 / .14)`,
       }}
     >
       <span
@@ -384,8 +378,9 @@ function LoyaltyCard({ bump, reduce }: { bump: boolean; reduce: boolean }) {
   const soft = "rgb(10 10 10 / .55)";
   return (
     <motion.div
-      animate={reduce ? {} : { rotateX: [8, -4, 8], rotateY: [-10, 10, -10], y: [0, -4, 0] }}
-      transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+      initial={false}
+      animate={reduce ? {} : bump ? { rotateX: [6, -4, 6], rotateY: [-8, 8, -8] } : { rotateX: 6, rotateY: -8 }}
+      transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
       style={{ transformPerspective: 700 }}
     >
       <motion.div
@@ -405,7 +400,7 @@ function LoyaltyCard({ bump, reduce }: { bump: boolean; reduce: boolean }) {
         />
         <div className="relative flex items-center gap-[5px]">
           <LogoMark size={13} ink="#0a0a0a" mono />
-          <span className="font-display text-[11.5px] font-bold leading-none tracking-[-0.03em]">greep</span>
+          <span className="font-display text-[11.5px] font-semibold leading-none">greep</span>
           <span className="mx-px h-[9px] w-px" style={{ background: soft }} />
           <span className="text-[9px] font-medium leading-none" style={{ color: soft }}>Rewards</span>
         </div>
@@ -464,7 +459,7 @@ function PointsCard({ points, last, lastKey }: { points: number; last: (typeof M
         <p className="eyebrow text-muted">Greep points</p>
         <Coin size={22} />
       </div>
-      <p className="mt-3 font-display text-[44px] font-bold leading-none tracking-[-0.05em]">
+      <p className="mt-3 font-display text-[44px] font-medium leading-none tracking-[-0.05em]">
         <Rolling value={points} />
       </p>
       <div className="mt-2 h-5 overflow-hidden text-[13px]">
@@ -485,8 +480,7 @@ function PointsCard({ points, last, lastKey }: { points: number; last: (typeof M
       </div>
       <div className="mt-4 h-2 overflow-hidden rounded-full bg-sunken">
         <motion.div
-          className="h-full rounded-full"
-          style={{ background: "linear-gradient(90deg, #0d965e, #c6f36d)" }}
+          className="h-full rounded-full bg-green"
           initial={false}
           animate={{ width: `${Math.max(4, pct)}%` }}
           transition={{ type: "spring", stiffness: 80, damping: 18 }}
@@ -604,7 +598,7 @@ function CouponCard({
               }}
             >
               <Blobatar name={merchant.seed} hue={merchant.hue} size={46} />
-              <span className="text-center text-[10.5px] font-semibold leading-tight text-muted">{merchant.name}</span>
+              <span className="text-center text-[11px] font-semibold leading-tight text-muted">{merchant.name}</span>
             </div>
             {/* the coupon tears out */}
             <motion.div
@@ -622,14 +616,14 @@ function CouponCard({
               transition={reduce ? { duration: 0 } : { type: "spring", stiffness: 260, damping: 13 }}
             >
               <span className="flex items-center justify-between">
-                <span className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] opacity-60">Coupon</span>
+                <span className="font-mono text-[11px] font-semibold opacity-60">Coupon</span>
                 <Ticket size={15} strokeWidth={2.2} className="opacity-60" />
               </span>
               <span>
-                <span className="block font-display text-[26px] font-bold leading-none tracking-[-0.05em]">{merchant.coupon}</span>
+                <span className="block font-display text-[26px] font-medium leading-none tracking-[-0.05em]">{merchant.coupon}</span>
                 <span className="mt-1 block truncate text-[12.5px] font-medium opacity-75">at {merchant.name}</span>
               </span>
-              <span className="w-fit rounded-md border border-dashed border-[#0a0a0a]/40 px-1.5 py-0.5 font-mono text-[10.5px] font-bold">{merchant.code}</span>
+              <span className="w-fit rounded-md border border-dashed border-[#0a0a0a]/40 px-1.5 py-0.5 font-mono text-[11px] font-semibold">{merchant.code}</span>
             </motion.div>
           </motion.div>
         </AnimatePresence>
@@ -669,7 +663,7 @@ function CouponCard({
                 <span className="min-w-0 flex-1 truncate text-[13px]">
                   <span className="font-semibold">{x.coupon}</span> <span className="text-muted">at {x.name}</span>
                 </span>
-                <span className="font-mono text-[10.5px] text-muted">{x.code}</span>
+                <span className="font-mono text-[11px] text-muted">{x.code}</span>
               </motion.li>
             );
           })}
